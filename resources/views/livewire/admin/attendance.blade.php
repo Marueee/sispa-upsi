@@ -44,7 +44,7 @@
                     <table class="w-full table-auto border-collapse border">
                         <thead class="bg-gray-100">
                             <tr>
-                                <th class="border px-4 py-2">#</th>
+                                <th class="border px-4 py-2">No.</th>
                                 <th class="border px-4 py-2">Name</th>
                                 <th class="border px-4 py-2">Matric No</th>
                                 <th class="border px-4 py-2">
@@ -85,7 +85,7 @@
                 </div>
                 <div>
                     <label class="block text-sm font-medium">Select Activity</label>
-                    <select wire:model="filterActivityName" class="w-full border rounded px-3 py-2">
+                    <select wire:model.live="filterActivityName" class="w-full border rounded px-3 py-2">
                         <option value="">-- Select Activity --</option>
                         @foreach ($activityNames as $activity)
                             <option value="{{ $activity }}">{{ $activity }}</option>
@@ -110,7 +110,7 @@
                     <table class="w-full table-auto border-collapse border">
                         <thead class="bg-gray-100">
                             <tr>
-                                <th class="border px-4 py-2">#</th>
+                                <th class="border px-4 py-2">No.</th>
                                 <th class="border px-4 py-2">Name</th>
                                 <th class="border px-4 py-2">Matric No</th>
                                 <th class="border px-4 py-2">Batch</th>
@@ -138,3 +138,17 @@
         </div>
     @endif
 </div>
+
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    window.addEventListener('showAlert', event => {
+        Swal.fire({
+            title: event.detail.title,
+            text: event.detail.message,
+            icon: event.detail.type,
+            timer: 3000,
+            showConfirmButton: false
+        });
+    });
+</script>

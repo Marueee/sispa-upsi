@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Attendance extends Model
 {
     protected $fillable = [
-        'member_id', 'batch', 'date', 'activity_name', 'is_present',
+        'member_id',
+        'date',
+        'activity_name',
+        'batch',
+        'is_present',
+        'description'
     ];
 
     public function member()

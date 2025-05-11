@@ -17,7 +17,7 @@ return new class extends Migration
         $table->string('batch');
         $table->date('date');
         $table->string('activity_name');
-        $table->text('description')->nullable();
+        $table->text('description');
         $table->boolean('is_present')->default(false);
         $table->timestamps();
     });

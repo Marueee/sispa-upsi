@@ -66,46 +66,71 @@ class Attendance extends Component
         return Member::where('batch', $this->selectedBatch)->get();
     }
 
+
+
     public function submit()
-{
-    // Add description to validation
-    $this->validate([
-        'selectedBatch' => 'required',
-        'date' => 'required|date',
-        'activity_name' => 'required',
-        'description' => 'nullable|string',
-    ]);
+    {
+        $this->validate([
+            'selectedBatch' => 'required',
+            'date' => 'required|date',
+            'activity_name' => 'required',
+            'attendance' => 'required|array|min:1',
+        ]);
 
-    try {
-        foreach ($this->attendance as $memberId => $present) {
-            AttendanceModel::updateOrCreate(
-                [
-                    'member_id' => $memberId,
-                    'date' => $this->date,
-                    'activity_name' => $this->activity_name,
-                ],
-                [
-                    'batch' => $this->selectedBatch,
-                    'is_present' => $present,
-                    'description' => $this->description, // Add description
-                ]
-            );
-        }
+        try {
+            // Check if any attendance is marked
+            if (empty($this->attendance)) {
+                $this->js("
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Please mark at least one attendance.',
+                        icon: 'error',
+                        timer: 3000,
+                        showConfirmButton: false
+                    })
+                ");
+                return;
+            }
 
-            $this->dispatch('showAlert', [
-                'type' => 'success',
-                'title' => 'Success!',
-                'message' => 'Attendance saved successfully!'
-            ]);
+            // Loop through all members regardless of attendance status
+            foreach ($this->members as $member) {
+                AttendanceModel::updateOrCreate(
+                    [
+                        'member_id' => $member->id,
+                        'date' => $this->date,
+                        'activity_name' => $this->activity_name,
+                    ],
+                    [
+                        'batch' => $this->selectedBatch,
+                        'is_present' => isset($this->attendance[$member->id]) ? true : false,
+                        'description' => $this->description ?? '',
+                    ]
+                );
+            }
 
-            // Reset form after successful save
-            $this->reset(['activity_name', 'attendance']);
+            $this->js("
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Attendance saved successfully!',
+                    icon: 'success',
+                    timer: 3000,
+                    showConfirmButton: false
+                })
+            ");
+
+            // Reset form fields
+            $this->reset(['activity_name', 'description', 'attendance']);
+
         } catch (\Exception $e) {
-            $this->dispatch('showAlert', [
-                'type' => 'error',
-                'title' => 'Error!',
-                'message' => 'Failed to save attendance. Please try again.'
-            ]);
+            $this->js("
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Failed to save attendance: {$e->getMessage()}',
+                    icon: 'error',
+                    timer: 3000,
+                    showConfirmButton: false
+                })
+            ");
         }
     }
 
