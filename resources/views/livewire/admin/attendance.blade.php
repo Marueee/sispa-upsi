@@ -1,103 +1,125 @@
 <div class="p-4">
-    <h2 class="text-2xl font-bold mb-4">Attendance Management</h2>
+    <h2 class="text-2xl font-bold mb-4">Attendance</h2>
 
-    <form wire:submit.prevent="submit" class="space-y-4 mb-6">
-        <div class="grid md:grid-cols-3 gap-4">
-            <div>
-                <label class="block text-sm font-medium">Batch</label>
-                <select wire:model.live="selectedBatch" class="w-full border rounded px-3 py-2 dark:bg-neutral-900">
-                    <option value="">-- Select Batch --</option>
-                    @foreach ($batches as $batch)
-                        <option value="{{ $batch }}">{{ $batch }}</option>
-                    @endforeach
-                </select>
-                @error('selectedBatch')
-                    <span class="text-red-500 text-sm">{{ $message }}</span>
-                @enderror
-            </div>
+    {{-- Toggle buttons --}}
+    <div class="mb-4 flex gap-2">
+        <button wire:click="$set('showReport', false)" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+            Mark Attendance
+        </button>
+        <button wire:click="showReportSection" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+            View Report
+        </button>
+    </div>
 
-            <div>
-                <label class="block text-sm font-medium">Date</label>
-                <input type="date" wire:model="date" class="w-full border rounded px-3 py-2 dark:bg-neutral-900"
-                    required>
-                @error('date')
-                    <span class="text-red-500 text-sm">{{ $message }}</span>
-                @enderror
-            </div>
-
-            <div>
-                <label class="block text-sm font-medium">Activity Name</label>
-                <input type="text" wire:model="activity_name"
-                    class="w-full border rounded px-3 py-2 dark:bg-neutral-900" required
-                    placeholder="Enter activity name">
-                @error('activity_name')
-                    <span class="text-red-500 text-sm">{{ $message }}</span>
-                @enderror
-            </div>
-        </div>
-
-        {{-- Members table --}}
-        @if ($selectedBatch && $members->isNotEmpty())
-            <div class="overflow-x-auto">
-                <table class="w-full table-auto border-collapse border mt-4">
-                    <thead class="bg-gray-100">
-                        <tr>
-                            <th class="border px-4 py-2">No.</th>
-                            <th class="border px-4 py-2">Name</th>
-                            <th class="border px-4 py-2">Matric No</th>
-                            <th class="border px-4 py-2">
-                                <div class="flex items-center justify-center space-x-2">
-                                    <span class="mr-2">Present</span>
-                                    <input type="checkbox" wire:click="toggleAllCheckboxes"
-                                        class="form-checkbox h-5 w-5 text-blue-600 transition duration-150 ease-in-out"
-                                        @checked(count($attendance) === $members->count())>
-                                </div>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($members as $index => $member)
-                            <tr class="text-center hover:bg-gray-50">
-                                <td class="border px-4 py-2">{{ $index + 1 }}</td>
-                                <td class="border px-4 py-2">{{ $member->name }}</td>
-                                <td class="border px-4 py-2">{{ $member->matric_no }}</td>
-                                <td class="border px-4 py-2">
-                                    <input type="checkbox" wire:model="attendance.{{ $member->id }}"
-                                        class="form-checkbox h-5 w-5 text-blue-600">
-                                </td>
-                            </tr>
+    {{-- Mark Attendance Section --}}
+    @unless ($showReport)
+        <form wire:submit.prevent="submit" class="space-y-4">
+            <div class="grid md:grid-cols-3 gap-4">
+                <div>
+                    <label class="block text-sm font-medium">Batch</label>
+                    <select wire:model="selectedBatch" class="w-full border rounded px-3 py-2">
+                        <option value="">-- Select Batch --</option>
+                        @foreach ($batches as $batch)
+                            <option value="{{ $batch }}">{{ $batch }}</option>
                         @endforeach
-                    </tbody>
-                </table>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium">Date</label>
+                    <input type="date" wire:model="date" class="w-full border rounded px-3 py-2">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium">Activity Name</label>
+                    <input type="text" wire:model="activity_name" class="w-full border rounded px-3 py-2">
+                </div>
             </div>
 
-            <button type="submit" wire:loading.attr="disabled"
-                class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-200 disabled:opacity-50">
-                <span wire:loading.remove>Submit</span>
-                <span wire:loading>Saving...</span>
+            @if ($members->isNotEmpty())
+                <div class="overflow-x-auto mt-4">
+                    <table class="w-full table-auto border-collapse border">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="border px-4 py-2">#</th>
+                                <th class="border px-4 py-2">Name</th>
+                                <th class="border px-4 py-2">Matric No</th>
+                                <th class="border px-4 py-2">Present</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($members as $index => $member)
+                                <tr class="text-center">
+                                    <td class="border px-4 py-2">{{ $index + 1 }}</td>
+                                    <td class="border px-4 py-2">{{ $member->name }}</td>
+                                    <td class="border px-4 py-2">{{ $member->matric_no }}</td>
+                                    <td class="border px-4 py-2">
+                                        <input type="checkbox" wire:model="attendance.{{ $member->id }}">
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
+                <button type="submit" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                    Save Attendance
+                </button>
+            @endif
+        </form>
+    @endunless
+
+    {{-- Attendance Report Section --}}
+    @if ($showReport)
+        <div class="mt-6">
+            <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label class="block text-sm font-medium">Select Date</label>
+                    <input type="date" wire:model.live="filterDate" class="w-full border rounded px-3 py-2">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium">Select Activity</label>
+                    <select wire:model="filterActivityName" class="w-full border rounded px-3 py-2">
+                        <option value="">-- Select Activity --</option>
+                        @foreach ($activityNames as $activity)
+                            <option value="{{ $activity }}">{{ $activity }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+            <button wire:click="loadReport" class="mb-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+                View Report
             </button>
-        @elseif ($selectedBatch)
-            <div class="mt-4 p-4 bg-red-50 text-red-500 rounded">
-                No members found for this batch.
-            </div>
-        @endif
-    </form>
-</div>
 
-{{-- SweetAlert2 Scripts --}}
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    document.addEventListener('livewire:initialized', () => {
-        Livewire.on('showAlert', (data) => {
-            Swal.fire({
-                icon: data[0].type,
-                title: data[0].title,
-                text: data[0].message,
-                confirmButtonColor: '#3B82F6',
-                timer: 3000,
-                timerProgressBar: true,
-                showConfirmButton: false
-            });
-        });
-    });
-</script>
+            @if ($reportRecords)
+                <div class="overflow-x-auto">
+                    <table class="w-full table-auto border-collapse border">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="border px-4 py-2">#</th>
+                                <th class="border px-4 py-2">Name</th>
+                                <th class="border px-4 py-2">Matric No</th>
+                                <th class="border px-4 py-2">Batch</th>
+                                <th class="border px-4 py-2">Present</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($reportRecords as $index => $att)
+                                <tr class="text-center">
+                                    <td class="border px-4 py-2">{{ $index + 1 }}</td>
+                                    <td class="border px-4 py-2">{{ $att->member->name }}</td>
+                                    <td class="border px-4 py-2">{{ $att->member->matric_no }}</td>
+                                    <td class="border px-4 py-2">{{ $att->batch }}</td>
+                                    <td class="border px-4 py-2">{{ $att->is_present ? 'Yes' : 'No' }}</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="text-center py-4 text-gray-500">No records found</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            @endif
+        </div>
+    @endif
+</div>
