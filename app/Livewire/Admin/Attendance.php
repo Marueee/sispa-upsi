@@ -20,7 +20,8 @@ class Attendance extends Component
     public $reportRecords = [];
     public $activityNames = [];
     public $showReport = false;
-
+    public $description;
+    public $reportDescription = null;
 
     public function mount()
     {
@@ -66,37 +67,30 @@ class Attendance extends Component
     }
 
     public function submit()
-    {
-        // Add validation
-        $this->validate([
-            'selectedBatch' => 'required',
-            'date' => 'required|date',
-            'activity_name' => 'required',
-        ]);
+{
+    // Add description to validation
+    $this->validate([
+        'selectedBatch' => 'required',
+        'date' => 'required|date',
+        'activity_name' => 'required',
+        'description' => 'nullable|string',
+    ]);
 
-        if (empty($this->attendance)) {
-            $this->dispatch('showAlert', [
-                'type' => 'error',
-                'title' => 'Error!',
-                'message' => 'Please mark at least one attendance!'
-            ]);
-            return;
+    try {
+        foreach ($this->attendance as $memberId => $present) {
+            AttendanceModel::updateOrCreate(
+                [
+                    'member_id' => $memberId,
+                    'date' => $this->date,
+                    'activity_name' => $this->activity_name,
+                ],
+                [
+                    'batch' => $this->selectedBatch,
+                    'is_present' => $present,
+                    'description' => $this->description, // Add description
+                ]
+            );
         }
-
-        try {
-            foreach ($this->attendance as $memberId => $present) {
-                AttendanceModel::updateOrCreate(
-                    [
-                        'member_id' => $memberId,
-                        'date' => $this->date,
-                        'activity_name' => $this->activity_name,
-                    ],
-                    [
-                        'batch' => $this->selectedBatch,
-                        'is_present' => $present,
-                    ]
-                );
-            }
 
             $this->dispatch('showAlert', [
                 'type' => 'success',
@@ -136,6 +130,14 @@ class Attendance extends Component
         }
 
         $this->reportRecords = $query->get();
+
+        // Get description for the selected activity and date
+        if ($this->filterDate && $this->filterActivityName) {
+            $record = AttendanceModel::where('date', $this->filterDate)
+                ->where('activity_name', $this->filterActivityName)
+                ->first();
+            $this->reportDescription = $record ? $record->description : null;
+        }
     }
 
     public function updatedFilterDate()

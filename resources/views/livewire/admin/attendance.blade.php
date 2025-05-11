@@ -17,7 +17,7 @@
             <div class="grid md:grid-cols-3 gap-4">
                 <div>
                     <label class="block text-sm font-medium">Batch</label>
-                    <select wire:model="selectedBatch" class="w-full border rounded px-3 py-2">
+                    <select wire:model.live="selectedBatch" class="w-full border rounded px-3 py-2">
                         <option value="">-- Select Batch --</option>
                         @foreach ($batches as $batch)
                             <option value="{{ $batch }}">{{ $batch }}</option>
@@ -32,6 +32,11 @@
                     <label class="block text-sm font-medium">Activity Name</label>
                     <input type="text" wire:model="activity_name" class="w-full border rounded px-3 py-2">
                 </div>
+                <div>
+                    <label class="block text-sm font-medium">Description</label>
+                    <textarea wire:model="description" class="w-full border rounded px-3 py-2" rows="3"
+                        placeholder="Enter activity description"></textarea>
+                </div>
             </div>
 
             @if ($members->isNotEmpty())
@@ -42,7 +47,10 @@
                                 <th class="border px-4 py-2">#</th>
                                 <th class="border px-4 py-2">Name</th>
                                 <th class="border px-4 py-2">Matric No</th>
-                                <th class="border px-4 py-2">Present</th>
+                                <th class="border px-4 py-2">
+                                    Present
+                                    <input type="checkbox" wire:click="toggleAllCheckboxes" class="ml-2">
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -90,7 +98,14 @@
                 View Report
             </button>
 
+
             @if ($reportRecords)
+                @if ($reportDescription)
+                    <div class="mb-4 p-4 bg-gray-50 rounded-lg">
+                        <h3 class="font-semibold text-gray-700 mb-2">Activity Description:</h3>
+                        <p class="text-gray-600">{{ $reportDescription }}</p>
+                    </div>
+                @endif
                 <div class="overflow-x-auto">
                     <table class="w-full table-auto border-collapse border">
                         <thead class="bg-gray-100">
