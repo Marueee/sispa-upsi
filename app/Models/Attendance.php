@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Attendance extends Model
 {
@@ -15,7 +16,12 @@ class Attendance extends Model
         'description'
     ];
 
-    public function member()
+    protected $casts = [
+        'date' => 'date',
+        'is_present' => 'boolean'
+    ];
+
+    public function member(): BelongsTo
     {
         return $this->belongsTo(Member::class);
     }
