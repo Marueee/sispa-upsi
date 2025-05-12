@@ -14,6 +14,7 @@ class Attendance extends Component
     public $date;
     public $activity_name;
     public $attendance = [];
+    public $selectAll = false;
     public $description;
 
     protected $rules = [
@@ -43,7 +44,16 @@ class Attendance extends Component
 
     public function updatedSelectedBatch()
     {
-        $this->reset(['attendance', 'activity_name', 'description']);
+        $this->reset(['attendance', 'activity_name', 'description', 'selectAll']);
+    }
+
+    public function updatedSelectAll($value)
+    {
+        if ($value) {
+            $this->attendance = $this->members->pluck('id')->mapWithKeys(fn($id) => [$id => true])->toArray();
+        } else {
+            $this->attendance = [];
+        }
     }
 
     public function toggleAllCheckboxes()
@@ -77,7 +87,7 @@ class Attendance extends Component
                     ],
                     [
                         'batch' => $this->selectedBatch,
-                        'is_present' => isset($this->attendance[$member->id]),
+                        'is_present' => isset($this->attendance[$member->id]) && $this->attendance[$member->id] === true,
                         'description' => $this->description ?? '',
                     ]
                 );
@@ -86,7 +96,7 @@ class Attendance extends Component
             DB::commit();
 
             $this->showSuccessMessage();
-            $this->reset(['activity_name', 'description', 'attendance']);
+            $this->reset(['activity_name', 'description', 'attendance', 'selectAll']);
 
         } catch (\Exception $e) {
             DB::rollBack();

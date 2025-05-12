@@ -29,27 +29,31 @@
 
         @if ($members->isNotEmpty())
             <div class="overflow-x-auto mt-4">
-                <table class="w-full table-auto border-collapse border">
-                    <thead class="bg-gray-100">
+                <table class="w-full border-collapse border">
+                    <thead class="">
                         <tr>
-                            <th class="border px-4 py-2">No.</th>
-                            <th class="border px-4 py-2">Name</th>
-                            <th class="border px-4 py-2">Matric No</th>
-                            <th class="border px-4 py-2">
-                                Present
-                                <input type="checkbox" wire:click="toggleAllCheckboxes" class="ml-2">
+                            <th class="border px-4 py-2 text-center">
+                                <label class="flex items-center justify-center space-x-2">
+                                    <input type="checkbox"
+                                        wire:model.live="selectAll"
+                                        class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                                    {{-- <span>Present</span> --}}
+                                </label>
                             </th>
+                            <th class="border px-4 py-2 text-center">Name</th>
+                            <th class="border px-4 py-2 text-center">Matric No</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($members as $index => $member)
-                            <tr class="text-center">
-                                <td class="border px-4 py-2">{{ $index + 1 }}</td>
-                                <td class="border px-4 py-2">{{ $member->name }}</td>
-                                <td class="border px-4 py-2">{{ $member->matric_no }}</td>
-                                <td class="border px-4 py-2">
-                                    <input type="checkbox" wire:model="attendance.{{ $member->id }}">
+                        @foreach($members as $member)
+                            <tr class="">
+                                <td class="border px-4 py-2 text-center">
+                                    <input type="checkbox"
+                                        wire:model.live="attendance.{{ $member->id }}"
+                                        class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
                                 </td>
+                                <td class="border px-4 py-2 text-center">{{ $member->name }}</td>
+                                <td class="border px-4 py-2 text-center">{{ $member->matric_no }}</td>
                             </tr>
                         @endforeach
                     </tbody>
