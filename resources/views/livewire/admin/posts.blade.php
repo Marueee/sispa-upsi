@@ -6,7 +6,7 @@
     </div>
 
     <!-- Post Form -->
-    <div class=" shadow-lg rounded-xl p-8 mb-10 max-w-4xl mx-auto">
+    <div class=" shadow-lg rounded-xl p-8 mb-10 max-w-4xl mx-auto" >
         <form wire:submit.prevent="{{ $isEdit ? 'update' : 'store' }}" class="space-y-6">
 
             <!-- Title -->

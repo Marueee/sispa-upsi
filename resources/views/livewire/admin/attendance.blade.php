@@ -4,8 +4,8 @@
     <form wire:submit.prevent="submit" class="space-y-4">
         <div class="grid md:grid-cols-3 gap-4">
             <div>
-                <label class="block text-sm font-medium">Batch</label>
-                <select wire:model.live="selectedBatch" class="w-full border rounded px-3 py-2">
+                <label class="block text-sm font-medium ">Batch</label>
+                <select wire:model.live="selectedBatch" class="w-full border rounded px-3 py-2 border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                     <option value="">-- Select Batch --</option>
                     @foreach ($batches as $batch)
                         <option value="{{ $batch }}">{{ $batch }}</option>

@@ -14,7 +14,7 @@
         <div class="mb-4">
             <label class="block text-sm font-medium mb-2">Select Activity</label>
             <select wire:model.live="filterActivityName"
-                    class="w-full md:w-1/3 border rounded px-3 py-2"
+                    class="w-full md:w-1/3 border rounded px-3 py-2 border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                     wire:change="loadReport">
                 <option value="">-- Select Activity --</option>
                 @foreach ($activityNames as $activity)
