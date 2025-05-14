@@ -27,6 +27,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
+
     Route::get('admin/posts', Posts::class)->name('admin.posts');
     Route::get('/admin/members', Members::class)->name('admin.members');
     Route::get('/admin/attendance', Attendance::class)->name('admin.attendance');
