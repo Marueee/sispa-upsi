@@ -617,6 +617,7 @@ class ComposerStaticInit0153c17453bcea3bd1750ae213b8fab0
         'App\\Livewire\\Admin\\Attendance' => __DIR__ . '/../..' . '/app/Livewire/Admin/Attendance.php',
         'App\\Livewire\\Admin\\Members' => __DIR__ . '/../..' . '/app/Livewire/Admin/Members.php',
         'App\\Livewire\\Admin\\Posts' => __DIR__ . '/../..' . '/app/Livewire/Admin/Posts.php',
+        'App\\Livewire\\Admin\\Report' => __DIR__ . '/../..' . '/app/Livewire/Admin/Report.php',
         'App\\Livewire\\Auth\\ConfirmPassword' => __DIR__ . '/../..' . '/app/Livewire/Auth/ConfirmPassword.php',
         'App\\Livewire\\Auth\\ForgotPassword' => __DIR__ . '/../..' . '/app/Livewire/Auth/ForgotPassword.php',
         'App\\Livewire\\Auth\\Login' => __DIR__ . '/../..' . '/app/Livewire/Auth/Login.php',

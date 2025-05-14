@@ -12,6 +12,7 @@ return array(
     'App\\Livewire\\Admin\\Attendance' => $baseDir . '/app/Livewire/Admin/Attendance.php',
     'App\\Livewire\\Admin\\Members' => $baseDir . '/app/Livewire/Admin/Members.php',
     'App\\Livewire\\Admin\\Posts' => $baseDir . '/app/Livewire/Admin/Posts.php',
+    'App\\Livewire\\Admin\\Report' => $baseDir . '/app/Livewire/Admin/Report.php',
     'App\\Livewire\\Auth\\ConfirmPassword' => $baseDir . '/app/Livewire/Auth/ConfirmPassword.php',
     'App\\Livewire\\Auth\\ForgotPassword' => $baseDir . '/app/Livewire/Auth/ForgotPassword.php',
     'App\\Livewire\\Auth\\Login' => $baseDir . '/app/Livewire/Auth/Login.php',

@@ -26,7 +26,7 @@ class Login extends Component
     /**
      * Handle an incoming authentication request.
      */
-    public function login(): void
+    public function login()
     {
         $this->validate();
 
@@ -43,7 +43,15 @@ class Login extends Component
         RateLimiter::clear($this->throttleKey());
         Session::regenerate();
 
-        $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+        // Check if the user has a role
+        if (Auth::user()?->hasRole('admin')) {
+            // Redirect to the admin dashboard
+            return $this->redirectIntended(route('dashboard', absolute: false), navigate: true);
+        } else {
+            // Redirect to the user dashboard
+            return $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+        }
+        // $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
     }
 
     /**
@@ -72,6 +80,6 @@ class Login extends Component
      */
     protected function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->email).'|'.request()->ip());
+        return Str::transliterate(Str::lower($this->email) . '|' . request()->ip());
     }
 }
