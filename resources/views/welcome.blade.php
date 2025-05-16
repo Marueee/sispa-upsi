@@ -44,18 +44,19 @@
 
             <a href="index.php" class="logo d-flex align-items-center me-auto">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
+                <img src="{{ asset('build/assets/img/logoupsi1.png') }}" alt="">
                 <img src="{{ asset('build/assets/img/sispalogo.png') }}" alt="">
-                <h1 class="sitename">SISPA</h1>
+                {{-- <h1 class="sitename">SISPA</h1> --}}
 
             </a>
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="#hero" class="active">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li class="dropdown"><a href="#"><span>Dropdown</span> <i
+                    <li><a href="#hero" class="active">Utama</a></li>
+                    <li><a href="#about">Info</a></li>
+                    <li><a href="#services">Berita</a></li>
+                    <li><a href="#team">Galeri</a></li>
+                    <li class="dropdown"><a href="#"><span>Borang</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             <li><a href="#">Dropdown 1</a></li>
@@ -74,12 +75,12 @@
                             <li><a href="#">Dropdown 4</a></li>
                         </ul>
                     </li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#contact">Hubungi</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
 
-            <a class="btn-getstarted" href="{{ route('login') }}">Login Admin</a>
+            <a class="btn-getstarted" href="{{ route('login') }}">Admin</a>
 
         </div>
     </header>
@@ -92,28 +93,34 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="hero-content" data-aos="fade-up" data-aos-delay="100">
-                            <div class="hero-tag">
+                            {{-- <div class="hero-tag">
                                 <i class="bi bi-rocket-takeoff"></i>
                                 <span>Innovative Solutions</span>
-                            </div>
-                            <h1>Achieving <span class="highlight">Outstanding Results</span> for Your Growth</h1>
-                            <p class="lead">Our dedicated team provides exceptional service to help you reach your
-                                business goals
-                                effectively.</p>
-                            <ul class="hero-features">
-                                <li><i class="bi bi-check-circle"></i> Streamlined operational processes</li>
-                                <li><i class="bi bi-check-circle"></i> Enhanced customer engagement strategies</li>
-                                <li><i class="bi bi-check-circle"></i> Data-driven decision support</li>
+                            </div> --}}
+                            <h1>Kor Siswa-Siswi Pertahanan Awam <span class="highlight">(KOR SISPA)</span> UPSI</h1>
+                            <p class="lead">Merupakan sebuah badan beruniform di Universiti Pendidikan Sultan Idris
+                                (UPSI) yang bertujuan untuk memupuk semangat kesukarelawanan, kerjasama dan jati diri
+                                dalam kalangan mahasiswa.</p>
+                            <ul class="hero-features" <li class="mb-2 fw-bold" style="list-style:none;">
+                                <i class="text-primary me-2"></i> Objektif utama penubuhan SISPA ialah:
+                                </li>
+                                <li style="height: 8px; border: none; background: none;"></li>
+                                <li><i class="bi bi-check-circle"></i> Meningkatkan tahap disiplin dan semangat jati
+                                    diri dalam kalangan pelajar.</li>
+                                <li><i class="bi bi-check-circle"></i> Melahirkan graduan yang bersedia menyumbang
+                                    kepada pasukan keselamatan negara secara sukarela.</li>
+                                <li><i class="bi bi-check-circle"></i> Memupuk nilai kepimpinan, kerjasama dan daya
+                                    tahan fizikal dan mental.</li>
                             </ul>
                             <div class="hero-cta">
-                                <a href="#services" class="btn btn-primary">Explore Our Services</a>
-                                <a href="tel:+1 (555) 987-6543" class="btn btn-link"><i class="bi bi-telephone"></i> +1
+                                <a href="#services" class="btn btn-primary">Borang Pendaftaran</a>
+                                {{-- <a href="tel:+1 (555) 987-6543" class="btn btn-link"><i class="bi bi-telephone"></i> +1
                                     (555)
-                                    987-6543</a>
+                                    987-6543</a> --}}
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    {{-- <div class="col-lg-6">
                         <div class="hero-image-wrapper" data-aos="fade-up" data-aos-delay="300">
                             <img src="{{ asset('build/assets/img/about/background1.jpg') }}" alt=""
                                 class="img-fluid hero-image">
@@ -132,6 +139,52 @@
                                 </div>
                             </div>
                         </div>
+                    </div> --}}
+
+                    <div id="siswaQuotesCarousel" class="carousel slide py-4" data-bs-ride="carousel"
+                        data-bs-interval="6000">
+                        <div class="carousel-inner bg-light p-4 rounded shadow">
+                            <div class="carousel-item active text-center">
+                                <p class="fs-5 fst-italic" style="color: #000;">
+                                    “SISPA bukan sekadar latihan ketenteraan, ia adalah latihan hidup yang membentuk
+                                    siapa anda di masa hadapan. Di sinilah anda belajar erti tanggungjawab, keberanian
+                                    dan setiakawan.”
+                                </p>
+                                <h6 class="fw-bold mt-3" style="color: var(--accent-color);">— Kapten (PA) Ahmad Faizal
+                                    Bin Zainal, Pegawai Latihan SISPA
+                                    UPSI</h6>
+                            </div>
+                            <div class="carousel-item text-center">
+                                <p class="fs-5 fst-italic" style="color: #000;">
+                                    “SISPA UPSI menggilap potensi kepimpinan pelajar dalam suasana berdisiplin dan penuh
+                                    cabaran. Ini adalah ruang terbaik untuk anda menjadi lebih dari sekadar mahasiswa.”
+                                </p>
+                                <h6 class="fw-bold mt-3" style="color: var(--accent-color);">— Mejar (K) Dr. Norazlina
+                                    Binti Razali, Penasihat SISPA UPSI
+                                </h6>
+                            </div>
+                            <div class="carousel-item text-center">
+                                <p class="fs-5 fst-italic" style="color: #000;">
+                                    “Setiap latihan adalah peluang. Setiap cabaran adalah ruang untuk kita jadi lebih
+                                    kuat. SISPA telah mengubah cara saya melihat dunia.”
+                                </p>
+                                <h6 class="fw-bold mt-3" style="color: var(--accent-color);">— Kadet Sarjan Nur Aina
+                                    Izzati, Ketua Platun SISPA UPSI 2024
+                                </h6>
+                            </div>
+                        </div>
+
+                        <!-- Optional controls -->
+                        {{-- <button class="carousel-control-prev" type="button" data-bs-target="#siswaQuotesCarousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true"></span>
+                            <span class="visually-hidden">Sebelumnya</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#siswaQuotesCarousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
+                            <span class="visually-hidden">Seterusnya</span>
+                        </button> --}}
                     </div>
                 </div>
             </div>
