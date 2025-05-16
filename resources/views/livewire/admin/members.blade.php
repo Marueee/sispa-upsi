@@ -7,6 +7,9 @@
         </div>
     @endif
 
+    <!-- Filter Section -->
+
+
     <!-- Form Section -->
     <form wire:submit.prevent="{{ $isEdit ? 'update' : 'store' }}" class="space-y-4 mb-6">
         <div>
@@ -43,6 +46,15 @@
             @endif
         </div>
     </form>
+    <div class="mb-4 ">
+        <label for="batchFilter" class="block text-sm font-medium mb-1">Filter by Batch</label>
+        <select wire:model.live="selectedBatch" id="batchFilter" class="border rounded px-3 py-2  border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+            <option value="">All Batches</option>
+            @foreach($batches as $batchOption)
+                <option value="{{ $batchOption }}">{{ $batchOption }}</option>
+            @endforeach
+        </select>
+    </div>
 
     <!-- Table Section -->
     <table class="w-full table-auto border-collapse border">

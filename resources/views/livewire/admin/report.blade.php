@@ -42,19 +42,19 @@
 
                     {{-- Summary Stats --}}
                     <div class="grid grid-cols-4 gap-4 mb-4">
-                        <div class="text-center p-2 bg-gray-50 rounded">
+                        <div class="text-center p-2 bg-gray-200 rounded">
                             <div class="text-sm text-gray-600">Total</div>
                             <div class="font-medium text-gray-600">{{ $records->count() }}</div>
                         </div>
-                        <div class="text-center p-2 bg-green-50 rounded">
+                        <div class="text-center p-2 bg-green-200 rounded">
                             <div class="text-sm text-gray-600">Present</div>
                             <div class="font-medium text-green-600">{{ $records->where('is_present', true)->count() }}</div>
                         </div>
-                        <div class="text-center p-2 bg-red-50 rounded">
+                        <div class="text-center p-2 bg-red-200 rounded">
                             <div class="text-sm text-gray-600">Absent</div>
                             <div class="font-medium text-red-600">{{ $records->where('is_present', false)->count() }}</div>
                         </div>
-                        <div class="text-center p-2 bg-blue-50 rounded">
+                        <div class="text-center p-2 bg-blue-200 rounded">
                             <div class="text-sm text-gray-600">Attendance Rate</div>
                             <div class="font-medium text-blue-600">
                                 @php
@@ -72,7 +72,7 @@
                         <div x-data="{ open: false }" class="mt-4">
                             <button
                                 @click="open = !open"
-                                class="flex items-center justify-between w-full p-3 text-left bg-red-50 rounded-lg hover:bg-red-100 transition-colors"
+                                class="flex items-center justify-between w-full p-3 text-left bg-red-200 rounded-lg hover:bg-red-100 transition-colors"
                             >
                                 <div class="flex items-center space-x-2">
                                     <span class="font-medium text-red-600">

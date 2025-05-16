@@ -10,20 +10,49 @@ class Members extends Component
     public $name = '', $matric_no = '', $batch = '', $memberId = null;
     public $isEdit = false;
     public $members;
+    public $selectedBatch = '';
+    public $batches = [];
+
+    protected $listeners = ['refreshComponent' => '$refresh'];
 
     public function mount()
     {
+        $this->batches = Member::distinct('batch')->pluck('batch')->toArray();
         $this->loadMembers();
     }
 
     public function render()
     {
-        return view('livewire.admin.members');
+        $query = Member::query()->orderBy('name');
+
+        if ($this->selectedBatch) {
+            $query->where('batch', $this->selectedBatch);
+        }
+
+        $this->members = $query->get();
+
+        return view('livewire.admin.members', [
+            'members' => $this->members,
+            'batches' => $this->batches
+        ]);
+    }
+
+    public function updated($propertyName)
+    {
+        if ($propertyName === 'selectedBatch') {
+            $this->loadMembers();
+        }
     }
 
     public function loadMembers()
     {
-        $this->members = Member::orderBy('name')->get();
+        $query = Member::query()->orderBy('name');
+
+        if ($this->selectedBatch) {
+            $query->where('batch', $this->selectedBatch);
+        }
+
+        $this->members = $query->get();
     }
 
     public function store()
