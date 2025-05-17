@@ -54,7 +54,7 @@
                 <ul>
                     <li><a href="#hero" class="active">Utama</a></li>
                     <li><a href="#about">Info</a></li>
-                    <li><a href="#services">Berita</a></li>
+                    <li><a href="#berita">Berita</a></li>
                     <li><a href="#team">Galeri</a></li>
                     <li class="dropdown"><a href="#"><span>Borang</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -101,7 +101,7 @@
                             <p class="lead">Merupakan sebuah badan beruniform di Universiti Pendidikan Sultan Idris
                                 (UPSI) yang bertujuan untuk memupuk semangat kesukarelawanan, kerjasama dan jati diri
                                 dalam kalangan mahasiswa.</p>
-                            <ul class="hero-features" <li class="mb-2 fw-bold" style="list-style:none;">
+                            <ul class="hero-features" class="mb-2 fw-bold" style="list-style:none;">
                                 <i class="text-primary me-2"></i> Objektif utama penubuhan SISPA ialah:
                                 </li>
                                 <li style="height: 8px; border: none; background: none;"></li>
@@ -120,27 +120,26 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="col-lg-6">
-                        <div class="hero-image-wrapper" data-aos="fade-up" data-aos-delay="300">
-                            <img src="{{ asset('build/assets/img/about/background1.jpg') }}" alt=""
-                                class="img-fluid hero-image">
-                            <div class="stat-card top-right">
-                                <div class="stat-value">18.9K</div>
-                                <div class="stat-label">Improved market presence</div>
-                                <div class="stat-icon">
-                                    <i class="bi bi-graph-up-arrow"></i>
+                    {{-- Image Section --}}
+                    <div class="col-lg-6">
+                        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner rounded-4 shadow">
+                                <div class="carousel-item active">
+                                    <img src="{{ asset('build/assets/img/gambar-depan1.jpg') }}" class="d-block w-100"
+                                        alt="SISPA Image 1">
                                 </div>
-                            </div>
-                            <div class="stat-card bottom-left">
-                                <div class="stat-value">+450%</div>
-                                <div class="stat-label">Increased lead generation</div>
-                                <div class="stat-icon">
-                                    <i class="bi bi-graph-up"></i>
+                                <div class="carousel-item active">
+                                    <img src="{{ asset('build/assets/img/gambar-depan2.jpg') }}" class="d-block w-100"
+                                        alt="SISPA Image 2">
+                                </div>
+                                <div class="carousel-item active">
+                                    <img src="{{ asset('build/assets/img/gambar-depan3.jpg') }}"
+                                        class="d-block w-100" alt="SISPA Image 3">
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
-
+                    </div>
+                    {{-- Quotes Section --}}
                     <div id="siswaQuotesCarousel" class="carousel slide py-4" data-bs-ride="carousel"
                         data-bs-interval="6000">
                         <div class="carousel-inner bg-light p-4 rounded shadow">
@@ -150,7 +149,8 @@
                                     siapa anda di masa hadapan. Di sinilah anda belajar erti tanggungjawab, keberanian
                                     dan setiakawan.”
                                 </p>
-                                <h6 class="fw-bold mt-3" style="color: var(--accent-color);">— Kapten (PA) Ahmad Faizal
+                                <h6 class="fw-bold mt-3" style="color: var(--accent-color);">— Kapten (PA) Ahmad
+                                    Faizal
                                     Bin Zainal, Pegawai Latihan SISPA
                                     UPSI</h6>
                             </div>
@@ -173,34 +173,26 @@
                                 </h6>
                             </div>
                         </div>
-
-                        <!-- Optional controls -->
-                        {{-- <button class="carousel-control-prev" type="button" data-bs-target="#siswaQuotesCarousel"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true"></span>
-                            <span class="visually-hidden">Sebelumnya</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#siswaQuotesCarousel"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
-                            <span class="visually-hidden">Seterusnya</span>
-                        </button> --}}
                     </div>
                 </div>
             </div>
-        </section><!-- /Hero Section -->
+        </section>
+        <!-- /Hero Section -->
 
-        <!-- About Section -->
+        <!-- Info Section -->
         <section id="about" class="about section">
-
+            {{-- Misi & Visi SISPA UPSI --}}
             <div class="container" data-aos="fade-up" data-aos-delay="100">
-
                 <div class="row justify-content-center mb-5">
                     <div class="col-lg-8 text-center" data-aos="fade-up" data-aos-delay="200">
-                        <h2 class="section-heading">Our Vision &amp; Mission</h2>
-                        <p class="lead">We're dedicated to transforming businesses through innovative solutions and
-                            strategic
-                            expertise that drive sustainable growth.</p>
+                        <h2 class="section-heading">Objektif SISPA UPSI</h2>
+                        <h3 class="section-subheading">Misi</h3>
+                        <p class="lead">Melahirkan graduan yang berpengetahuan, berdisiplin dan bersemangat patriotik
+                            melalui penglibatan dalam latihan ketenteraan sukarela serta program kemasyarakatan
+                            berstruktur.</p>
+                        <h3 class="section-subheading">Visi</h3>
+                        <p class="lead">Menjadi pasukan beruniform terunggul di peringkat IPT dalam membentuk
+                            kepimpinan mahasiswa berteraskan nilai pertahanan dan khidmat awam.</p>
                     </div>
                 </div>
 
@@ -210,19 +202,18 @@
                             <div class="icon-container">
                                 <i class="bi bi-lightbulb"></i>
                             </div>
-                            <h4>Innovation</h4>
-                            <p>Pioneering solutions that challenge conventional thinking and create new opportunities
-                                for success.</p>
+                            <h4>Kesedaran</h4>
+                            <p>Meningkatkan kesedaran dan kefahaman pelajar terhadap peranan pertahanan awam.</p>
                         </div>
                     </div>
 
                     <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
                         <div class="feature-box">
                             <div class="icon-container">
-                                <i class="bi bi-graph-up-arrow"></i>
+                                <i class="bi bi-tools"></i>
                             </div>
-                            <h4>Growth</h4>
-                            <p>Facilitating sustainable expansion through strategic planning and calculated execution.
+                            <h4>Kemahiran</h4>
+                            <p>Menyediakan latihan asas dalam pengurusan bencana, keselamatan dan kecemasan.
                             </p>
                         </div>
                     </div>
@@ -230,11 +221,10 @@
                     <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
                         <div class="feature-box">
                             <div class="icon-container">
-                                <i class="bi bi-shield-check"></i>
+                                <i class="bi-diagram-3"></i>
                             </div>
-                            <h4>Integrity</h4>
-                            <p>Upholding the highest standards of ethics, transparency and accountability in all our
-                                endeavors.</p>
+                            <h4>Kepimpinan</h4>
+                            <p>Membina kemahiran insaniah seperti komunikasi, kepimpinan, dan kerjasama berpasukan.</p>
                         </div>
                     </div>
 
@@ -243,14 +233,17 @@
                             <div class="icon-container">
                                 <i class="bi bi-people-fill"></i>
                             </div>
-                            <h4>Collaboration</h4>
-                            <p>Working alongside our clients as partners to achieve mutual growth and shared success.
+                            <h4>Khidmat Masyarakat</h4>
+                            <p>Memberikan ruang kepada pelajar menyumbang kepada masyarakat melalui aktiviti khidmat
+                                sosial.
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <div class="row align-items-center about-showcase">
+                {{-- Carta Organisasi --}}
+
+                {{-- <div class="row align-items-center about-showcase">
                     <div class="col-lg-6 order-lg-2" data-aos="fade-left" data-aos-delay="300">
                         <div class="about-image-grid">
                             <img src="assets/img/about/about-15.webp" class="img-grid-main" alt="Our company vision">
@@ -308,14 +301,13 @@
                             <a href="about.html" class="btn btn-discover mt-4">Learn More About Us</a>
                         </div>
                     </div>
-                </div>
-
+                </div> --}}
             </div>
-
-        </section><!-- /About Section -->
+        </section>
+        <!-- /About Section -->
 
         <!-- Stats Section -->
-        <section id="stats" class="stats section light-background">
+        {{-- <section id="stats" class="stats section light-background">
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -395,254 +387,192 @@
 
             </div>
 
-        </section><!-- /Stats Section -->
+        </section> --}}
+        <!-- /Stats Section -->
 
-        <!-- Services Section -->
-        <section id="services" class="services section">
+        <!-- Berita Section -->
+        <section id="berita" class="services section">
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
-                <h2>Services</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-            </div><!-- End Section Title -->
+                <h2 class="section-heading">Berita Terkini</h2>
+                <p>Ikuti perkembangan dan aktiviti semasa Kor SISPA UPSI</p>
+            </div>
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
-
                 <div class="services-row">
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="services-headline" data-aos="fade-up">
-                                <p class="services-subtitle">Expert Guidance</p>
-                                <h2 class="services-title">Innovative Solutions We Provide</h2>
+                                <p class="services-subtitle">Aktiviti & Pencapaian</p>
+                                <h2 class="services-title">Berita Kor SISPA UPSI</h2>
                             </div>
 
                             <div class="services-description" data-aos="fade-up" data-aos-delay="100">
-                                <p>Our team delivers cutting-edge strategies to help you achieve your goals. Discover
-                                    how our tailored
-                                    services can benefit your business.</p>
+                                <p>Dapatkan maklumat terkini tentang latihan, program masyarakat dan pencapaian kadet
+                                    SISPA di UPSI.</p>
                             </div>
 
-                            <div class="services-image-container" data-aos="fade-up" data-aos-delay="200">
+                            {{-- <div class="services-image-container" data-aos="fade-up" data-aos-delay="200">
                                 <div class="services-image">
-                                    <img src="assets/img/services/services-12.webp" alt="Services" class="img-fluid">
+                                    <img src="assets/img/berita/utama.jpg" alt="SISPA Utama" class="img-fluid">
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
 
                         <div class="col-lg-8">
                             <div class="services-grid">
                                 <div class="row gy-4">
-                                    <!-- Service Item 1 -->
+
+                                    <!-- Berita 1 -->
                                     <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-                                        <div class="service-card">
-                                            <div class="service-content text-center">
-                                                <div class="service-icon">
-                                                    <i class="bi bi-cash-stack"></i>
-                                                </div>
+                                        <div class="service-card h-100">
+                                            <img src="{{ asset('build/assets/img/berita-lawatanAPM.jpg') }}"
+                                                alt="Lawatan APM" class="img-fluid w-100 rounded shadow-sm">
+
+                                            <div class="service-content text-center p-3">
                                                 <div class="service-info">
-                                                    <h3><a href="#">Strategic Planning</a></h3>
-                                                    <p>We offer customized plans to optimize your operations and improve
-                                                        overall efficiency across
-                                                        the board.</p>
+                                                    <h3><a href="#">Lawatan APM ke SISPA UPSI</a></h3>
+                                                    <p>Delegasi APM Malaysia meninjau operasi latihan dan kerjasama
+                                                        pertahanan awam di UPSI.</p>
                                                     <div class="service-action">
-                                                        <a href="service-details.html" class="read-more-btn">Details
-                                                            <i class="bi bi-arrow-right"></i></a>
+                                                        <a href="berita-details.html" class="read-more-btn">Baca
+                                                            Selanjutnya
+                                                            <i class="bi bi-arrow-right"></i>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- Service Item 2 -->
+                                    <!-- Berita 2 -->
                                     <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
-                                        <div class="service-card">
-                                            <div class="service-content text-center">
-                                                <div class="service-icon">
-                                                    <i class="bi bi-list-check"></i>
-                                                </div>
+                                        <div class="service-card h-100">
+                                            <img src="{{ asset('build/assets/img/berita-perkhemahan.jpg') }}"
+                                                alt="Perkhemahan" class="img-fluid w-100 rounded shadow-sm">
+                                            <div class="service-content text-center p-3">
                                                 <div class="service-info">
-                                                    <h3><a href="#">Digital Marketing</a></h3>
-                                                    <p>Our expert team crafts engaging campaigns that connect with your
-                                                        audience and drive
-                                                        conversions effectively.</p>
+                                                    <h3><a href="#">Perkhemahan SISPA 2024</a></h3>
+                                                    <p>Kadet SISPA jalani latihan kawad dan simulasi kecemasan di Kem
+                                                        Bukit Hijau.</p>
                                                     <div class="service-action">
-                                                        <a href="service-details.html" class="read-more-btn">View More
-                                                            <i class="bi bi-arrow-right"></i></a>
+                                                        <a href="berita-details.html" class="read-more-btn">Baca
+                                                            Selanjutnya <i class="bi bi-arrow-right"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- Service Item 3 -->
+
+                                    <!-- Berita 3 -->
                                     <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
-                                        <div class="service-card">
-                                            <div class="service-content text-center">
-                                                <div class="service-icon">
-                                                    <i class="bi bi-bar-chart"></i>
-                                                </div>
+                                        <div class="service-card h-100">
+                                            <img src="{{ asset('build/assets/img/berita-khidmat.jpg') }}"
+                                                alt="Khidmat Masyarakat" class="img-fluid w-100 rounded shadow-sm">
+                                            <div class="service-content text-center p-3">
                                                 <div class="service-info">
-                                                    <h3><a href="#">Performance Analysis</a></h3>
-                                                    <p>We analyze your data to provide actionable insights, helping you
-                                                        make informed decisions
-                                                        for future growth.</p>
+                                                    <h3><a href="#">Program Khidmat Masyarakat</a></h3>
+                                                    <p>Kadet SISPA berganding bahu bersama komuniti di Slim River dalam
+                                                        program kebajikan.</p>
                                                     <div class="service-action">
-                                                        <a href="service-details.html" class="read-more-btn">Read More
-                                                            <i class="bi bi-arrow-right"></i></a>
+                                                        <a href="berita-details.html" class="read-more-btn">Baca
+                                                            Selanjutnya <i class="bi bi-arrow-right"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- Service Item 4 -->
+                                    <!-- Berita 4 -->
                                     <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
-                                        <div class="service-card">
-                                            <div class="service-content text-center">
-                                                <div class="service-icon">
-                                                    <i class="bi bi-pie-chart"></i>
-                                                </div>
+                                        <div class="service-card h-100">
+                                            <img src="{{ asset('build/assets/img/berita-kursus.png') }}"
+                                                alt="Kursus Kepimpinan" class="img-fluid w-100 rounded shadow-sm">
+                                            <div class="service-content text-center p-3">
                                                 <div class="service-info">
-                                                    <h3><a href="#">Market Research</a></h3>
-                                                    <p>Understanding your market is key, and we provide comprehensive
-                                                        research to give you a
-                                                        competitive edge.</p>
+                                                    <h3><a href="#">Kursus Kepimpinan Kadet</a></h3>
+                                                    <p>Kursus kepimpinan peringkat negeri melatih kadet dalam komunikasi
+                                                        dan kepimpinan lapangan.</p>
                                                     <div class="service-action">
-                                                        <a href="service-details.html" class="read-more-btn">Learn
-                                                            More <i class="bi bi-arrow-right"></i></a>
+                                                        <a href="berita-details.html" class="read-more-btn">Baca
+                                                            Selanjutnya <i class="bi bi-arrow-right"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+
+
+                                </div><!-- end row -->
                             </div>
                         </div>
+
                     </div>
                 </div>
-
             </div>
-
-        </section><!-- /Services Section -->
+        </section>
+        <!-- /Berita Section -->
 
         <!-- Clients Section -->
         <section id="clients" class="clients section">
-
             <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
 
+                <!-- Track 1: Scroll Left -->
                 <div class="clients-slider">
                     <div class="clients-track track-1" data-aos="fade-right" data-aos-delay="200">
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-1.webp" class="img-fluid" alt="Client 1">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-2.webp" class="img-fluid" alt="Client 2">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-3.webp" class="img-fluid" alt="Client 3">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-4.webp" class="img-fluid" alt="Client 4">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-5.webp" class="img-fluid" alt="Client 5">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-6.webp" class="img-fluid" alt="Client 6">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-7.webp" class="img-fluid" alt="Client 7">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-8.webp" class="img-fluid" alt="Client 8">
-                        </div>
-
-                        <!-- Duplicate for seamless looping -->
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-1.webp" class="img-fluid" alt="Client 1">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-2.webp" class="img-fluid" alt="Client 2">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-3.webp" class="img-fluid" alt="Client 3">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-4.webp" class="img-fluid" alt="Client 4">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-5.webp" class="img-fluid" alt="Client 5">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-6.webp" class="img-fluid" alt="Client 6">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-7.webp" class="img-fluid" alt="Client 7">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-8.webp" class="img-fluid" alt="Client 8">
-                        </div>
+                        @for ($i = 0; $i < 2; $i++)
+                            <!-- Duplicate for seamless loop -->
+                            <div class="clients-slide">
+                                <img src="{{ asset('build/assets/img/kptlogo.png') }}" class="img-fluid"
+                                    alt="KPT">
+                            </div>
+                            <div class="clients-slide">
+                                <img src="{{ asset('build/assets/img/logoupsi1.png') }}" class="img-fluid"
+                                    alt="UPSI">
+                            </div>
+                            <div class="clients-slide">
+                                <img src="{{ asset('build/assets/img/logo100.png') }}" class="img-fluid"
+                                    alt="Logo100">
+                            </div>
+                            <div class="clients-slide">
+                                <img src="{{ asset('build/assets/img/sispalogo.png') }}" class="img-fluid"
+                                    alt="SISPA">
+                            </div>
+                        @endfor
                     </div>
                 </div>
 
+                <!-- Track 2: Scroll Right -->
                 <div class="clients-slider">
                     <div class="clients-track track-2" data-aos="fade-left" data-aos-delay="300">
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-8.webp" class="img-fluid" alt="Client 8">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-7.webp" class="img-fluid" alt="Client 7">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-6.webp" class="img-fluid" alt="Client 6">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-5.webp" class="img-fluid" alt="Client 5">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-4.webp" class="img-fluid" alt="Client 4">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-3.webp" class="img-fluid" alt="Client 3">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-2.webp" class="img-fluid" alt="Client 2">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-1.webp" class="img-fluid" alt="Client 1">
-                        </div>
-
-                        <!-- Duplicate for seamless looping -->
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-8.webp" class="img-fluid" alt="Client 8">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-7.webp" class="img-fluid" alt="Client 7">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-6.webp" class="img-fluid" alt="Client 6">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-5.webp" class="img-fluid" alt="Client 5">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-4.webp" class="img-fluid" alt="Client 4">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-3.webp" class="img-fluid" alt="Client 3">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-2.webp" class="img-fluid" alt="Client 2">
-                        </div>
-                        <div class="clients-slide">
-                            <img src="assets/img/clients/clients-1.webp" class="img-fluid" alt="Client 1">
-                        </div>
+                        @for ($i = 0; $i < 2; $i++)
+                            <!-- Duplicate for seamless loop -->
+                            <div class="clients-slide">
+                                <img src="{{ asset('build/assets/img/sispalogo.png') }}" class="img-fluid"
+                                    alt="SISPA">
+                            </div>
+                            <div class="clients-slide">
+                                <img src="{{ asset('build/assets/img/logo100.png') }}" class="img-fluid"
+                                    alt="Logo100">
+                            </div>
+                            <div class="clients-slide">
+                                <img src="{{ asset('build/assets/img/logoupsi1.png') }}" class="img-fluid"
+                                    alt="UPSI">
+                            </div>
+                            <div class="clients-slide">
+                                <img src="{{ asset('build/assets/img/kptlogo.png') }}" class="img-fluid"
+                                    alt="KPT">
+                            </div>
+                        @endfor
                     </div>
                 </div>
 
             </div>
+        </section>
 
-        </section><!-- /Clients Section -->
+
 
         <!-- Testimonials Section -->
         <section id="testimonials" class="testimonials section">

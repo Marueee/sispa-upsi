@@ -167,4 +167,30 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
+  // Client
+  
+  document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.clients-track').forEach(track => {
+    // Duplicate content
+    track.innerHTML += track.innerHTML;
+
+    // Get total width after duplication
+    const totalWidth = track.scrollWidth / 2; // Only one set
+
+    // Set dynamic keyframes based on width
+    const animationName = track.classList.contains('track-1') ? 'scroll-left' : 'scroll-right';
+    const keyframes = `
+      @keyframes ${animationName} {
+        0% { transform: translateX(${animationName === 'scroll-left' ? '0' : `-${totalWidth}px`}); }
+        100% { transform: translateX(${animationName === 'scroll-left' ? `-${totalWidth}px` : '0'}); }
+      }
+    `;
+
+    // Inject keyframes into the DOM
+    const style = document.createElement('style');
+    style.innerHTML = keyframes;
+    document.head.appendChild(style);
+  });
+});
+
 })();
