@@ -1373,6 +1373,39 @@ section,
 /*--------------------------------------------------------------
 # Services Section
 --------------------------------------------------------------*/
+
+.service-card {
+ min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.service-card img {
+  object-fit: cover;
+  height: 200px;
+  width: 100%;
+}
+
+.berita-navigation {
+  margin-top: 20px;
+}
+
+.carousel .carousel-item {
+  transition: transform 0.6s ease;
+}
+
+    /* Content section stretches to fill space */
+.service-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+/*  */
 .services {
   padding-top: 60px;
   padding-bottom: 30px;
@@ -2724,8 +2757,30 @@ section,
 }
 
 /*--------------------------------------------------------------
-# Service Details Section
+# Service/Berita Details Section
 --------------------------------------------------------------*/
+
+.custom-arrow-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #f85d23;
+    background-color: transparent;
+    color: #f85d23;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 20px;
+    padding: 0;
+}
+
+.custom-arrow-btn:hover {
+    background-color: #f85d23;
+    color: white;
+    box-shadow: #f85d23;
+}
+
 .service-details .swiper-wrapper {
   height: auto !important;
 }
