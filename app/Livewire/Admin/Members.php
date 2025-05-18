@@ -93,6 +93,9 @@ class Members extends Component
         $this->matric_no = $member->matric_no;
         $this->batch = $member->batch;
         $this->isEdit = true;
+
+        // Add this line to trigger the scroll
+        $this->dispatch('scrollToForm');
     }
 
     public function update()
