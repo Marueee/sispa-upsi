@@ -13,6 +13,7 @@
         </flux:main>
 
         @livewireScripts
+        @stack('scripts')
     </body>
     </html>
 </x-layouts.app.sidebar>

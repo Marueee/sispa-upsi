@@ -4,6 +4,7 @@ namespace App\Livewire\Admin;
 
 use Livewire\Component;
 use App\Models\Member;
+use Illuminate\Support\Facades\Log;  // Add this import
 
 class Members extends Component
 {
@@ -13,7 +14,9 @@ class Members extends Component
     public $selectedBatch = '';
     public $batches = [];
 
-    protected $listeners = ['refreshComponent' => '$refresh'];
+    protected $listeners = [
+        'refreshComponent' => '$refresh',
+    ];
 
     public function mount()
     {
@@ -57,21 +60,29 @@ class Members extends Component
 
     public function store()
     {
-        $this->validate([
-            'name' => 'required|string|max:255',
-            'matric_no' => 'required|string|max:20|unique:members,matric_no',
+        $validatedData = $this->validate([
+            'name' => 'required',
+            'matric_no' => 'required|unique:members,matric_no',
+            'batch' => 'required'
         ]);
 
-        Member::create([
-            'name' => $this->name,
-            'matric_no' => $this->matric_no,
-            'batch' => $this->batch,
-        ]);
+        try {
+            Member::create($validatedData);
+            $this->resetForm();
+            $this->loadMembers();
 
-        session()->flash('message', 'Member added successfully.');
-        $this->resetForm();
-        $this->loadMembers();
+            // Dispatch the success event for SweetAlert
+            $this->dispatch('memberCreated');
+        } catch (\Exception $e) {
+            Log::error('Create error: ' . $e->getMessage());
+            $this->dispatch('showAlert', [
+                'type' => 'error',
+                'title' => 'Error!',
+                'text' => 'Failed to create member'
+            ]);
+        }
     }
+
 
     public function edit($id)
     {
@@ -86,31 +97,38 @@ class Members extends Component
 
     public function update()
     {
-        $this->validate([
-            'name' => 'required|string|max:255',
-            'matric_no' => 'required|string|max:20|unique:members,matric_no,' . $this->memberId,
+        $validatedData = $this->validate([
+            'name' => 'required',
+            'matric_no' => 'required|unique:members,matric_no,' . $this->memberId,
+            'batch' => 'required'
         ]);
 
-        $member = Member::findOrFail($this->memberId);
-
-        $member->update([
-            'name' => $this->name,
-            'matric_no' => $this->matric_no,
-            'batch' => $this->batch,
-        ]);
-
-        session()->flash('message', 'Member updated successfully.');
+        $member = Member::find($this->memberId);
+        $member->update($validatedData);
         $this->resetForm();
-        $this->loadMembers();
+
+        $this->dispatch('showAlert', [
+            'type' => 'success',
+            'title' => 'Success!',
+            'text' => 'Member updated successfully!'
+        ]);
     }
 
     public function delete($id)
     {
-        $member = Member::findOrFail($id);
-        $member->delete();
+        try {
+            $member = Member::findOrFail($id);
+            $member->delete();
+            $this->loadMembers();
 
-        session()->flash('message', 'Member deleted.');
-        $this->loadMembers();
+            // Dispatch success event for SweetAlert
+            $this->dispatch('memberDeleted');
+        } catch (\Exception $e) {
+            Log::error('Delete error: ' . $e->getMessage());
+
+            // Dispatch error event for SweetAlert
+            $this->dispatch('deleteFailed');
+        }
     }
 
     public function resetForm()
