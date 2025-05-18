@@ -168,7 +168,7 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
   // Client
-  
+
   document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.clients-track').forEach(track => {
     // Duplicate content
@@ -192,5 +192,42 @@
     document.head.appendChild(style);
   });
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+        const carouselEl = document.querySelector('#beritaCarousel');
+        const carousel = new bootstrap.Carousel(carouselEl, { interval: 5000 });
+
+        document.querySelector('.berita-nav-prev').addEventListener('click', () => carousel.prev());
+        document.querySelector('.berita-nav-next').addEventListener('click', () => carousel.next());
+
+        // Swipe functionality
+        let startX = 0;
+
+        carouselEl.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+
+        carouselEl.addEventListener('touchend', (e) => {
+            let endX = e.changedTouches[0].clientX;
+            if (startX - endX > 50) carousel.next();
+            else if (endX - startX > 50) carousel.prev();
+        });
+
+        // Mouse drag for desktop
+        let isDown = false;
+        carouselEl.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.clientX;
+        });
+
+        carouselEl.addEventListener('mouseup', (e) => {
+            if (!isDown) return;
+            isDown = false;
+            let endX = e.clientX;
+            if (startX - endX > 50) carousel.next();
+            else if (endX - startX > 50) carousel.prev();
+        });
+    });
 
 })();

@@ -412,24 +412,17 @@
                                 <p>Dapatkan maklumat terkini tentang latihan, program masyarakat dan pencapaian kadet
                                     SISPA di UPSI.</p>
                             </div>
-
-                            {{-- <div class="services-image-container" data-aos="fade-up" data-aos-delay="200">
-                                <div class="services-image">
-                                    <img src="assets/img/berita/utama.jpg" alt="SISPA Utama" class="img-fluid">
-                                </div>
-                            </div> --}}
                         </div>
 
-                        <div class="col-lg-8">
-                            <div class="services-grid">
-                                <div class="row gy-4">
-
+                        <div class="col-lg-6 mx-auto">
+                            <div id="beritaCarousel" class="carousel slide" data-bs-ride="carousel"
+                                data-bs-interval="5000">
+                                <div class="carousel-inner">
                                     <!-- Berita 1 -->
-                                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="carousel-item active">
                                         <div class="service-card h-100">
                                             <img src="{{ asset('build/assets/img/berita-lawatanAPM.jpg') }}"
                                                 alt="Lawatan APM" class="img-fluid w-100 rounded shadow-sm">
-
                                             <div class="service-content text-center p-3">
                                                 <div class="service-info">
                                                     <h3><a href="#">Lawatan APM ke SISPA UPSI</a></h3>
@@ -437,9 +430,7 @@
                                                         pertahanan awam di UPSI.</p>
                                                     <div class="service-action">
                                                         <a href="berita-details.html" class="read-more-btn">Baca
-                                                            Selanjutnya
-                                                            <i class="bi bi-arrow-right"></i>
-                                                        </a>
+                                                            Selanjutnya <i class="bi bi-arrow-right"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -447,7 +438,7 @@
                                     </div>
 
                                     <!-- Berita 2 -->
-                                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="carousel-item">
                                         <div class="service-card h-100">
                                             <img src="{{ asset('build/assets/img/berita-perkhemahan.jpg') }}"
                                                 alt="Perkhemahan" class="img-fluid w-100 rounded shadow-sm">
@@ -465,9 +456,8 @@
                                         </div>
                                     </div>
 
-
                                     <!-- Berita 3 -->
-                                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                                    <div class="carousel-item">
                                         <div class="service-card h-100">
                                             <img src="{{ asset('build/assets/img/berita-khidmat.jpg') }}"
                                                 alt="Khidmat Masyarakat" class="img-fluid w-100 rounded shadow-sm">
@@ -486,7 +476,7 @@
                                     </div>
 
                                     <!-- Berita 4 -->
-                                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                                    <div class="carousel-item">
                                         <div class="service-card h-100">
                                             <img src="{{ asset('build/assets/img/berita-kursus.png') }}"
                                                 alt="Kursus Kepimpinan" class="img-fluid w-100 rounded shadow-sm">
@@ -503,9 +493,18 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
+                                <!-- Custom Stylish Navigation Buttons -->
+                                <div class="berita-navigation text-center mt-4">
+                                    <button class="berita-nav-prev custom-arrow-btn me-2">
+                                        <i class="bi bi-arrow-left"></i>
+                                    </button>
+                                    <button class="berita-nav-next custom-arrow-btn">
+                                        <i class="bi bi-arrow-right"></i>
+                                    </button>
+                                </div>
 
-                                </div><!-- end row -->
                             </div>
                         </div>
 
