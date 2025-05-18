@@ -21,6 +21,7 @@
                 </flux:navlist.group>
                 <flux:navlist.group :heading="__('Platform')" class="grid">
                     <flux:navlist.item icon="folder" :href="route('admin.posts')" :current="request()->routeIs('admin.posts')" wire:navigate>{{ __('Manage Post') }}</flux:navlist.item>
+                    <flux:navlist.item icon="newspaper" :href="route('admin.news')" :current="request()->routeIs('admin.news')" wire:navigate>{{ __('Manage News') }}</flux:navlist.item>
                     <flux:navlist.item icon="user" :href="route('admin.members')" :current="request()->routeIs('admin.members')" wire:navigate>{{ __('Members') }}</flux:navlist.item>
                     <flux:navlist.item icon="document-check" :href="route('admin.attendance')" :current="request()->routeIs('admin.attendance')" wire:navigate>{{ __('Attendance') }}</flux:navlist.item>
                     <flux:navlist.item icon="clipboard-document-list" :href="route('admin.report')" :current="request()->routeIs('admin.report')" wire:navigate>{{ __('Report') }}</flux:navlist.item>

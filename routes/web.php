@@ -9,6 +9,7 @@ use App\Livewire\Admin\Members;
 use App\Livewire\Admin\AttendanceManager;
 use App\Livewire\Admin\Report;
 use App\Livewire\Admin\Dashboard;
+use App\Livewire\Admin\NewsManager;
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,6 +33,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('admin/dashboard', Dashboard::class)->name('dashboard');
     Route::get('admin/posts', Posts::class)->name('admin.posts');
+    Route::get('admin/news', NewsManager::class)->name('admin.news');
     Route::get('admin/members', Members::class)->name('admin.members');
     Route::get('admin/attendance', AttendanceManager::class)->name('admin.attendance');
     Route::get('admin/report', Report::class)->name('admin.report');
