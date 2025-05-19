@@ -418,81 +418,46 @@
                             <div id="beritaCarousel" class="carousel slide" data-bs-ride="carousel"
                                 data-bs-interval="5000">
                                 <div class="carousel-inner">
-                                    <!-- Berita 1 -->
+                                    @forelse($news as $key => $item)
+                                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
+                                        <div class="service-card h-100">
+                                            @if($item->image)
+                                                <!-- Debug info -->
+                                                <div class="d-none">
+                                                    Image path: {{ $item->image }}<br>
+                                                    Full URL: {{ asset('storage/' . $item->image) }}
+                                                </div>
+                                                <img src="{{ asset('storage/' . $item->image) }}"
+                                                    alt="{{ $item->title }}" class="img-fluid w-100 rounded shadow-sm"
+                                                    onerror="this.onerror=null; this.src='{{ asset('build/assets/img/default-news.jpg') }}';">
+                                            @else
+                                                <img src="{{ asset('build/assets/img/default-news.jpg') }}"
+                                                    alt="{{ $item->title }}" class="img-fluid w-100 rounded shadow-sm">
+                                            @endif
+                                            <div class="service-content text-center p-3">
+                                                <div class="service-info">
+                                                    <h3><a href="#">{{ $item->title }}</a></h3>
+                                                    <p>{{ Str::limit($item->content, 100) }}</p>
+                                                    <div class="service-action">
+                                                        <a href="{{ route('news.show', $item->id) }}" class="read-more-btn">Baca
+                                                            Selanjutnya <i class="bi bi-arrow-right"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @empty
                                     <div class="carousel-item active">
                                         <div class="service-card h-100">
-                                            <img src="{{ asset('build/assets/img/berita-lawatanAPM.jpg') }}"
-                                                alt="Lawatan APM" class="img-fluid w-100 rounded shadow-sm">
                                             <div class="service-content text-center p-3">
                                                 <div class="service-info">
-                                                    <h3><a href="#">Lawatan APM ke SISPA UPSI</a></h3>
-                                                    <p>Delegasi APM Malaysia meninjau operasi latihan dan kerjasama
-                                                        pertahanan awam di UPSI.</p>
-                                                    <div class="service-action">
-                                                        <a href="berita-details.html" class="read-more-btn">Baca
-                                                            Selanjutnya <i class="bi bi-arrow-right"></i></a>
-                                                    </div>
+                                                    <h3>Tiada Berita</h3>
+                                                    <p>Tiada berita terkini pada masa ini.</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <!-- Berita 2 -->
-                                    <div class="carousel-item">
-                                        <div class="service-card h-100">
-                                            <img src="{{ asset('build/assets/img/berita-perkhemahan.jpg') }}"
-                                                alt="Perkhemahan" class="img-fluid w-100 rounded shadow-sm">
-                                            <div class="service-content text-center p-3">
-                                                <div class="service-info">
-                                                    <h3><a href="#">Perkhemahan SISPA 2024</a></h3>
-                                                    <p>Kadet SISPA jalani latihan kawad dan simulasi kecemasan di Kem
-                                                        Bukit Hijau.</p>
-                                                    <div class="service-action">
-                                                        <a href="berita-details.html" class="read-more-btn">Baca
-                                                            Selanjutnya <i class="bi bi-arrow-right"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Berita 3 -->
-                                    <div class="carousel-item">
-                                        <div class="service-card h-100">
-                                            <img src="{{ asset('build/assets/img/berita-khidmat.jpg') }}"
-                                                alt="Khidmat Masyarakat" class="img-fluid w-100 rounded shadow-sm">
-                                            <div class="service-content text-center p-3">
-                                                <div class="service-info">
-                                                    <h3><a href="#">Program Khidmat Masyarakat</a></h3>
-                                                    <p>Kadet SISPA berganding bahu bersama komuniti di Slim River dalam
-                                                        program kebajikan.</p>
-                                                    <div class="service-action">
-                                                        <a href="berita-details.html" class="read-more-btn">Baca
-                                                            Selanjutnya <i class="bi bi-arrow-right"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Berita 4 -->
-                                    <div class="carousel-item">
-                                        <div class="service-card h-100">
-                                            <img src="{{ asset('build/assets/img/berita-kursus.png') }}"
-                                                alt="Kursus Kepimpinan" class="img-fluid w-100 rounded shadow-sm">
-                                            <div class="service-content text-center p-3">
-                                                <div class="service-info">
-                                                    <h3><a href="#">Kursus Kepimpinan Kadet</a></h3>
-                                                    <p>Kursus kepimpinan peringkat negeri melatih kadet dalam komunikasi
-                                                        dan kepimpinan lapangan.</p>
-                                                    <div class="service-action">
-                                                        <a href="berita-details.html" class="read-more-btn">Baca
-                                                            Selanjutnya <i class="bi bi-arrow-right"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforelse
                                 </div>
 
                                 <!-- Custom Stylish Navigation Buttons -->

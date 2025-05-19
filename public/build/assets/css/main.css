@@ -18,7 +18,7 @@
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
+:root {
   --background-color: #ffffff; /* Background color for the entire website, including individual sections */
   --default-color: #52413a; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #31221c; /* Color for headings, subheadings and title throughout the website */
@@ -3184,4 +3184,181 @@ section,
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+}
+
+/* News Article Styles */
+.news-article {
+    padding: 80px 0;
+}
+
+.news-article .article-content {
+    background: var(--surface-color);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+}
+
+.news-article .article-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.news-article .article-image img {
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.news-article .article-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 20px;
+}
+
+.news-article .article-title {
+    color: var(--heading-color);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.news-article .article-meta {
+    color: var(--default-color);
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+.news-article .article-meta span {
+    margin-right: 20px;
+}
+
+.news-article .article-meta i {
+    margin-right: 5px;
+}
+
+.news-article .article-body {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--default-color);
+    margin: 30px 0;
+}
+
+.news-article .article-tags .badge {
+    margin: 0 5px 5px 0;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    background: var(--background-color);
+    color: var(--default-color);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.news-article .article-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 20px;
+}
+
+.news-article .social-share {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.news-article .social-share .share-text {
+    font-weight: 500;
+}
+
+.news-article .social-share .btn {
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.news-article .navigation-buttons {
+    margin-top: 30px;
+}
+
+/* Related News Sidebar */
+.related-news {
+    background: var(--surface-color);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+}
+
+.related-news .sidebar-title {
+    color: var(--heading-color);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.related-news .related-item {
+    display: flex;
+    align-items: start;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.related-news .related-item:last-child {
+    border-bottom: none;
+}
+
+.related-news .related-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.related-news .related-item .related-info h4 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.related-news .related-item .related-info h4 a {
+    color: var(--heading-color);
+    transition: color 0.3s ease;
+}
+
+.related-news .related-item .related-info h4 a:hover {
+    color: var(--accent-color);
+}
+
+.related-news .related-item .related-info .date {
+    font-size: 0.85rem;
+    color: var(--default-color);
+    opacity: 0.8;
+}
+
+@media (max-width: 991px) {
+    .news-article .article-title {
+        font-size: 2rem;
+    }
+
+    .related-news {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .news-article {
+        padding: 40px 0;
+    }
+
+    .news-article .article-title {
+        font-size: 1.75rem;
+    }
+
+    .news-article .article-content {
+        padding: 20px;
+    }
+
+    .news-article .article-body {
+        font-size: 1rem;
+    }
 }

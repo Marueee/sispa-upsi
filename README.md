@@ -7,3 +7,7 @@ run all command first
 
 admin id : admin@local.com:password
 user id : user@local.com:password
+
+
+rm public/storage  # Remove existing symlink if it's broken
+php artisan storage:link  # Create fresh symlink

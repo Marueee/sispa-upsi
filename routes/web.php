@@ -10,10 +10,9 @@ use App\Livewire\Admin\AttendanceManager;
 use App\Livewire\Admin\Report;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\NewsManager;
+use App\Http\Controllers\WelcomeController;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [WelcomeController::class, 'index'])->name('home');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -48,5 +47,7 @@ Route::view('posts', 'posts')
 Route::view('user', 'user')
     ->middleware(['auth', 'role:user'])
     ->name('user');
+
+Route::get('/news/{news}', [WelcomeController::class, 'show'])->name('news.show');
 
 require __DIR__.'/auth.php';
