@@ -240,6 +240,85 @@
                         </div>
                     </div>
                 </div>
+                <!-- Testimonials Section -->
+                <section id="syarat-kelayakan" class="about section">
+                    <div class="container" data-aos="fade-up" data-aos-delay="100">
+                        <div class="row justify-content-center mb-5">
+                            <div class="col-lg-8 text-center" data-aos="fade-up" data-aos-delay="200">
+                                <h2 class="section-heading">Syarat Kelayakan</h2>
+                                <p class="lead">Berikut merupakan syarat asas penyertaan dalam Unit SISPA UPSI:</p>
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mb-4">
+                            <!-- Item 1 -->
+                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                                <div class="feature-box p-3 border rounded shadow-sm h-100">
+                                    <div class="icon-container mb-2">
+                                        <i class="bi bi-person-check fs-3"></i>
+                                    </div>
+                                    <h5 class="mb-2">Warganegara Malaysia</h5>
+                                    <p class="small">Terbuka kepada semua pelajar warganegara Malaysia yang berdaftar di UPSI.</p>
+                                </div>
+                            </div>
+
+                            <!-- Item 2 -->
+                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                                <div class="feature-box p-3 border rounded shadow-sm h-100">
+                                    <div class="icon-container mb-2">
+                                        <i class="bi bi-clipboard-plus fs-3"></i>
+                                    </div>
+                                    <h5 class="mb-2">Status Kesihatan Baik</h5>
+                                    <p class="small">Tiada masalah kesihatan serius yang menghalang aktiviti fizikal dan latihan ketenteraan ringan.</p>
+                                </div>
+                            </div>
+
+                            <!-- Item 3 -->
+                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                                <div class="feature-box p-3 border rounded shadow-sm h-100">
+                                    <div class="icon-container mb-2">
+                                        <i class="bi bi-mortarboard fs-3"></i>
+                                    </div>
+                                    <h5 class="mb-2">Komitmen Akademik</h5>
+                                    <p class="small">Mampu menyeimbangkan jadual kuliah dengan latihan SISPA tanpa menjejaskan prestasi akademik.</p>
+                                </div>
+                            </div>
+
+                            <!-- Item 4 -->
+                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                                <div class="feature-box p-3 border rounded shadow-sm h-100">
+                                    <div class="icon-container mb-2">
+                                        <i class="bi bi-people fs-3"></i>
+                                    </div>
+                                    <h5 class="mb-2">Kemahiran Bekerja Dalam Kumpulan</h5>
+                                    <p class="small">Mempunyai semangat kerjasama dan sanggup mematuhi disiplin serta arahan pegawai latihan.</p>
+                                </div>
+                            </div>
+
+                            <!-- Item 5 -->
+                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+                                <div class="feature-box p-3 border rounded shadow-sm h-100">
+                                    <div class="icon-container mb-2">
+                                        <i class="bi bi-shield-check fs-3"></i>
+                                    </div>
+                                    <h5 class="mb-2">Rekod Disiplin Baik</h5>
+                                    <p class="small">Tidak mempunyai rekod tatatertib atau penglibatan dalam aktiviti tidak bermoral.</p>
+                                </div>
+                            </div>
+
+                            <!-- Item 6 -->
+                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="600">
+                                <div class="feature-box p-3 border rounded shadow-sm h-100">
+                                    <div class="icon-container mb-2">
+                                        <i class="bi bi-hourglass-split fs-3"></i>
+                                    </div>
+                                    <h5 class="mb-2">Ketersediaan Masa</h5>
+                                    <p class="small">Sanggup menghadiri latihan mingguan, perkhemahan, dan aktiviti Kor SISPA sepanjang pengajian.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 {{-- Carta Organisasi --}}
 
@@ -422,17 +501,17 @@
                                     <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
                                         <div class="service-card h-100">
                                             @if($item->image)
-                                                <!-- Debug info -->
-                                                <div class="d-none">
-                                                    Image path: {{ $item->image }}<br>
-                                                    Full URL: {{ asset('storage/' . $item->image) }}
-                                                </div>
-                                                <img src="{{ asset('storage/' . $item->image) }}"
-                                                    alt="{{ $item->title }}" class="img-fluid w-100 rounded shadow-sm"
-                                                    onerror="this.onerror=null; this.src='{{ asset('build/assets/img/default-news.jpg') }}';">
+                                            <!-- Debug info -->
+                                            <div class="d-none">
+                                                Image path: {{ $item->image }}<br>
+                                                Full URL: {{ asset('storage/' . $item->image) }}
+                                            </div>
+                                            <img src="{{ asset('storage/' . $item->image) }}"
+                                                alt="{{ $item->title }}" class="img-fluid w-100 rounded shadow-sm"
+                                                onerror="this.onerror=null; this.src='{{ asset('build/assets/img/default-news.jpg') }}';">
                                             @else
-                                                <img src="{{ asset('build/assets/img/default-news.jpg') }}"
-                                                    alt="{{ $item->title }}" class="img-fluid w-100 rounded shadow-sm">
+                                            <img src="{{ asset('build/assets/img/default-news.jpg') }}"
+                                                alt="{{ $item->title }}" class="img-fluid w-100 rounded shadow-sm">
                                             @endif
                                             <div class="service-content text-center p-3">
                                                 <div class="service-info">
@@ -504,7 +583,7 @@
                                 <img src="{{ asset('build/assets/img/sispalogo.png') }}" class="img-fluid"
                                     alt="SISPA">
                             </div>
-                        @endfor
+                            @endfor
                     </div>
                 </div>
 
@@ -529,7 +608,7 @@
                                 <img src="{{ asset('build/assets/img/kptlogo.png') }}" class="img-fluid"
                                     alt="KPT">
                             </div>
-                        @endfor
+                            @endfor
                     </div>
                 </div>
 
@@ -538,197 +617,8 @@
 
 
 
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="testimonials section">
 
-            <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Testimonials</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-            </div><!-- End Section Title -->
 
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="row g-4">
-                    <!-- Testimonial Item 1 -->
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="testimonial-item">
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere metus vitae arcu
-                                imperdiet, id
-                                aliquet ante scelerisque. Sed sit amet sem vitae urna fringilla tempus.</p>
-                            <div class="testimonial-footer">
-                                <div class="testimonial-author">
-                                    <img src="assets/img/person/person-m-3.webp" alt="Author"
-                                        class="img-fluid rounded-circle" loading="lazy">
-                                    <div>
-                                        <h5>Michael Anderson</h5>
-                                        <span>Software Developer</span>
-                                    </div>
-                                </div>
-                                <div class="quote-icon">
-                                    <i class="bi bi-quote"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End Testimonial Item -->
-
-                    <!-- Testimonial Item 2 -->
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="testimonial-item">
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna
-                                derita valies
-                                darta donna mare fermentum iaculis eu non diam phasellus.</p>
-                            <div class="testimonial-footer">
-                                <div class="testimonial-author">
-                                    <img src="assets/img/person/person-f-5.webp" alt="Author"
-                                        class="img-fluid rounded-circle" loading="lazy">
-                                    <div>
-                                        <h5>Sophia Martinez</h5>
-                                        <span>Marketing Specialist</span>
-                                    </div>
-                                </div>
-                                <div class="quote-icon">
-                                    <i class="bi bi-quote"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End Testimonial Item -->
-
-                    <!-- Testimonial Item 3 -->
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="testimonial-item">
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <p>Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper
-                                ultricies nisi.
-                                Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum.</p>
-                            <div class="testimonial-footer">
-                                <div class="testimonial-author">
-                                    <img src="assets/img/person/person-m-7.webp" alt="Author"
-                                        class="img-fluid rounded-circle" loading="lazy">
-                                    <div>
-                                        <h5>David Wilson</h5>
-                                        <span>Graphic Designer</span>
-                                    </div>
-                                </div>
-                                <div class="quote-icon">
-                                    <i class="bi bi-quote"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End Testimonial Item -->
-
-                    <!-- Testimonial Item 4 -->
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="testimonial-item">
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <p>Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,
-                                porttitor eu,
-                                consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis.</p>
-                            <div class="testimonial-footer">
-                                <div class="testimonial-author">
-                                    <img src="assets/img/person/person-f-9.webp" alt="Author"
-                                        class="img-fluid rounded-circle" loading="lazy">
-                                    <div>
-                                        <h5>Emily Johnson</h5>
-                                        <span>UX Designer</span>
-                                    </div>
-                                </div>
-                                <div class="quote-icon">
-                                    <i class="bi bi-quote"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End Testimonial Item -->
-
-                    <!-- Testimonial Item 5 -->
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
-                        <div class="testimonial-item">
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <p>Praesent nonummy mi in odio. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis
-                                hendrerit
-                                fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.</p>
-                            <div class="testimonial-footer">
-                                <div class="testimonial-author">
-                                    <img src="assets/img/person/person-f-11.webp" alt="Author"
-                                        class="img-fluid rounded-circle" loading="lazy">
-                                    <div>
-                                        <h5>Olivia Thompson</h5>
-                                        <span>Entrepreneur</span>
-                                    </div>
-                                </div>
-                                <div class="quote-icon">
-                                    <i class="bi bi-quote"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End Testimonial Item -->
-
-                    <!-- Testimonial Item 6 -->
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="600">
-                        <div class="testimonial-item">
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo,
-                                rhoncus ut,
-                                imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</p>
-                            <div class="testimonial-footer">
-                                <div class="testimonial-author">
-                                    <img src="assets/img/person/person-m-12.webp" alt="Author"
-                                        class="img-fluid rounded-circle" loading="lazy">
-                                    <div>
-                                        <h5>James Taylor</h5>
-                                        <span>Financial Analyst</span>
-                                    </div>
-                                </div>
-                                <div class="quote-icon">
-                                    <i class="bi bi-quote"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End Testimonial Item -->
-
-                </div>
-
-            </div>
-
-        </section><!-- /Testimonials Section -->
 
         <!-- How We Work Section -->
         <section id="how-we-work" class="how-we-work section">
@@ -1093,30 +983,30 @@
                     <div class="col-lg-8 team-carousel-wrap">
                         <div class="team-carousel swiper init-swiper">
                             <script type="application/json" class="swiper-config">
-                {
-                  "loop": true,
-                  "speed": 800,
-                  "autoplay": {
-                    "delay": 5000
-                  },
-                  "slidesPerView": 1,
-                  "spaceBetween": 20,
-                  "navigation": {
-                    "nextEl": ".team-nav-next",
-                    "prevEl": ".team-nav-prev"
-                  },
-                  "breakpoints": {
-                    "576": {
-                      "slidesPerView": 2,
-                      "spaceBetween": 20
-                    },
-                    "992": {
-                      "slidesPerView": 2,
-                      "spaceBetween": 30
-                    }
-                  }
-                }
-              </script>
+                                {
+                                    "loop": true,
+                                    "speed": 800,
+                                    "autoplay": {
+                                        "delay": 5000
+                                    },
+                                    "slidesPerView": 1,
+                                    "spaceBetween": 20,
+                                    "navigation": {
+                                        "nextEl": ".team-nav-next",
+                                        "prevEl": ".team-nav-prev"
+                                    },
+                                    "breakpoints": {
+                                        "576": {
+                                            "slidesPerView": 2,
+                                            "spaceBetween": 20
+                                        },
+                                        "992": {
+                                            "slidesPerView": 2,
+                                            "spaceBetween": 30
+                                        }
+                                    }
+                                }
+                            </script>
                             <div class="swiper-wrapper">
 
                                 <div class="swiper-slide">
