@@ -92,15 +92,15 @@
                                 <div class="social-share">
                                     <span class="share-text">Kongsi:</span>
                                     <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->url()) }}"
-                                       class="btn btn-sm btn-outline-primary" target="_blank">
+                                       class="member-social" target="_blank">
                                         <i class="bi bi-facebook"></i>
                                     </a>
                                     <a href="https://twitter.com/intent/tweet?url={{ urlencode(request()->url()) }}&text={{ urlencode($news->title) }}"
-                                       class="btn btn-sm btn-outline-info" target="_blank">
+                                       class="member-social" target="_blank">
                                         <i class="bi bi-twitter-x"></i>
                                     </a>
                                     <a href="https://wa.me/?text={{ urlencode($news->title . ' ' . request()->url()) }}"
-                                       class="btn btn-sm btn-outline-success" target="_blank">
+                                       class="member-social" target="_blank">
                                         <i class="bi bi-whatsapp"></i>
                                     </a>
                                 </div>

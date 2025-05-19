@@ -2759,6 +2759,18 @@ section,
 /*--------------------------------------------------------------
 # Service/Berita Details Section
 --------------------------------------------------------------*/
+/* Kembali ke laman utama btn */
+.navigation-buttons .btn-primary {
+  background-color: #f85d23;
+  border-color: #f85d23;
+  color: #fff;
+}
+
+.navigation-buttons .btn-primary:hover {
+  background-color: #d94e1e;
+  border-color: #d94e1e;
+  color: #fff;
+}
 
 .custom-arrow-btn {
     width: 50px;
