@@ -67,17 +67,23 @@
                 <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                     <thead>
                         <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">Action</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">User</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">Event Name</th>
                             <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">Date</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">Location</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                        <tr>
-                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900 dark:text-white">Member Added</td>
-                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900 dark:text-white">John Doe</td>
-                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500 dark:text-gray-400">2 hours ago</td>
-                        </tr>
+                        @forelse($recentEvents as $event)
+                            <tr>
+                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900 dark:text-white">{{ $event->name }}</td>
+                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900 dark:text-white">{{ $event->date->format('M d, Y') }}</td>
+                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500 dark:text-gray-400">{{ $event->location ?? 'N/A' }}</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="3" class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 text-center">No recent events found</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
