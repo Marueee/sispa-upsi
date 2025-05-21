@@ -113,10 +113,9 @@
                                     tahan fizikal dan mental.</li>
                             </ul>
                             <div class="hero-cta">
-                                <a href="#services" class="btn btn-primary">Borang Pendaftaran</a>
+                             <a href="{{ route('sispa.register.form') }}" class="btn btn-primary">Borang Pendaftaran</a>
                                 {{-- <a href="tel:+1 (555) 987-6543" class="btn btn-link"><i class="bi bi-telephone"></i> +1
-                                    (555)
-                                    987-6543</a> --}}
+                                    (555) 987-6543</a> --}}
                             </div>
                         </div>
                     </div>
@@ -1156,8 +1155,8 @@
                                     <i class="bi bi-geo-alt"></i>
                                 </div>
                                 <div class="contact-text">
-                                    <h4>Location</h4>
-                                    <p>8721 Broadway Avenue, New York, NY 10023</p>
+                                    <h4>Lokasi</h4>
+                                    <p>Bilik 07, Tingkat 1, Blok 1, Kampus Sultan Azlan Shah, Universiti Pendidikan Sultan Idris, 35900 Tanjong Malim, Perak Darul Ridzuan</p>
                                 </div>
                             </div>
 
@@ -1167,7 +1166,7 @@
                                 </div>
                                 <div class="contact-text">
                                     <h4>Email</h4>
-                                    <p>info@examplecompany.com</p>
+                                    <p>korsispaupsi20@gmail.com</p>
                                 </div>
                             </div>
 
@@ -1176,8 +1175,8 @@
                                     <i class="bi bi-telephone"></i>
                                 </div>
                                 <div class="contact-text">
-                                    <h4>Call</h4>
-                                    <p>+1 (212) 555-7890</p>
+                                    <h4>Tel</h4>
+                                    <p>05-452 0325</p>
                                 </div>
                             </div>
 
@@ -1186,17 +1185,15 @@
                                     <i class="bi bi-clock"></i>
                                 </div>
                                 <div class="contact-text">
-                                    <h4>Open Hours</h4>
+                                    <h4>Waktu Operasi</h4>
                                     <p>Monday-Friday: 9AM - 6PM</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="contact-form-container" data-aos="fade-up" data-aos-delay="400">
-                            <h3>Get in Touch</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt
-                                ut labore et
-                                dolore magna aliqua consectetur adipiscing.</p>
+                            <h3>Hubungi Kami</h3>
+                            <p>Sila hubungi kami sekiranya anda mempunyai sebarang pertanyaan. Kami sedia membantu anda sebaik mungkin.</p>
 
                             <form action="forms/contact.php" method="post" class="php-email-form">
                                 <div class="row">
