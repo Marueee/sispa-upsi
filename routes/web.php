@@ -14,6 +14,8 @@ use App\Http\Controllers\SispaAdminController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\SispaController;
 
+Route::post('/sispa/register', [SispaController::class, 'register'])->name('sispa.register');
+Route::get('/sispa/register', [SispaController::class, 'showRegisterForm'])->name('sispa.register.form');
 
 Route::get('/', [WelcomeController::class, 'index'])->name('home');
 
@@ -54,8 +56,5 @@ Route::view('user', 'user')
 
 Route::get('/news/{news}', [WelcomeController::class, 'show'])->name('news.show');
 
-
-Route::get('/sispa-register', [SispaController::class, 'showForm'])->name('sispa.register.form');
-Route::post('/sispa-register', [SispaController::class, 'store'])->name('sispa.register');
 
 require __DIR__.'/auth.php';

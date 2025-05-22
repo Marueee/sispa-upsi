@@ -76,7 +76,7 @@
 
                             <div class="mb-3">
                                 <label for="no_matrik" class="form-label">No Matrik</label>
-                                <input type="text" class="form-control" name="ic" required>
+                                <input type="text" class="form-control" name="no_matrik" required>
                             </div>
 
                             <div class="mb-3">
