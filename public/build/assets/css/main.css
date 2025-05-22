@@ -3374,3 +3374,18 @@ section,
         font-size: 1rem;
     }
 }
+
+/* Borang */
+
+.text-center .btn.btn-primary {
+  background-color: #f85d23;
+  border-color: #f85d23;
+  color: #fff;
+}
+
+.text-center .btn.btn-primary:hover,
+.text-center .btn.btn-primary:focus {
+  background-color: #d94e1e;
+  border-color: #d94e1e;
+  color: #fff;
+}

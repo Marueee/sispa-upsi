@@ -17,13 +17,23 @@ class SispaAdminController extends Controller
     }
 
     public function updateStatus(Request $request, $id)
-    {
-        $application = SispaMember::findOrFail($id);
-        $application->status = $request->status;
-        $application->save();
+{
+    $request->validate([
+        'status' => 'required|in:pending,approved,rejected', // Validate status
+    ]);
 
+    $application = SispaMember::findOrFail($id);
+    $application->status = $request->status;
+    $application->save();
+
+    // Send email notification
+    try {
         Mail::to($application->email)->send(new ApplicationStatusMail($application, 'status_updated'));
-
-        return redirect()->route('admin.sispa.index')->with('success', 'Status updated successfully.');
+    } catch (\Exception $e) {
+        \Log::error('Email sending failed: ' . $e->getMessage());
     }
+
+    return redirect()->route('admin.sispa.index')->with('success', 'Status updated successfully.');
+}
+
 }

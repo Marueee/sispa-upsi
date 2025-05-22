@@ -114,8 +114,6 @@
                             </ul>
                             <div class="hero-cta">
                              <a href="{{ route('sispa.register.form') }}" class="btn btn-primary">Borang Pendaftaran</a>
-                                {{-- <a href="tel:+1 (555) 987-6543" class="btn btn-link"><i class="bi bi-telephone"></i> +1
-                                    (555) 987-6543</a> --}}
                             </div>
                         </div>
                     </div>
