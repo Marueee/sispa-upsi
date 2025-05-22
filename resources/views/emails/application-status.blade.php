@@ -1,20 +1,18 @@
 @component('mail::message')
 # Hello {{ $application->name }},
 
-Your SISPA application status has been updated.
+Your SISPA application status has been updated to:
 
 @component('mail::panel')
-**Status:** {{ ucfirst($application->status) }}
+**{{ ucfirst($application->status) }}**
 @endcomponent
 
-@if ($application->status === 'approved')
-✅ Congratulations! Your application has been approved.
+@if ($application->status === 'accepted')
+Congratulations! Your application has been **accepted**. We will follow up with the next steps soon.
 @elseif ($application->status === 'rejected')
-❌ We're sorry, your application has been rejected.
-@else
-⏳ Your application is currently pending.
+We regret to inform you that your application has been **rejected**. Please contact us if you’d like more information.
 @endif
 
 Thanks,<br>
-SISPA Admin Team
+{{ config('app.name') }}
 @endcomponent

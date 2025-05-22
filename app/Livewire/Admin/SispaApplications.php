@@ -25,7 +25,12 @@ class SispaApplications extends Component
         // Send email notification
         Mail::to($application->email)->send(new ApplicationStatusNotification($application));
 
+        // Flash success message
+        session()->flash('success', true);
         session()->flash('message', "Permohonan {$application->name} telah dikemaskini kepada: $status");
+
+        // Optional: refresh list
+        $this->applications = SispaMember::all();
     }
 
     public function render()
@@ -33,4 +38,3 @@ class SispaApplications extends Component
         return view('livewire.admin.sispa-applications');
     }
 }
-

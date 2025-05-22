@@ -13,7 +13,7 @@ class ApplicationStatusNotification extends Mailable
 
     public $application;
 
-    public function __construct(SispaMember $application)
+    function __construct(SispaMember $application)
     {
         $this->application = $application;
     }

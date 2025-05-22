@@ -43,7 +43,7 @@
                         <td class="px-6 py-4 text-center border-b border-gray-300 dark:border-gray-700">
                             <span
                                 class="px-3 py-1 inline-flex text-center leading-5 font-semibold rounded-full
-                                {{ $application->status === 'approved'
+                                {{ $application->status === 'accepted'
                                     ? 'bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-200'
                                     : ($application->status === 'rejected'
                                         ? 'bg-red-100 dark:bg-red-800 text-red-800 dark:text-red-200'
@@ -52,12 +52,12 @@
                             </span>
                         </td>
                         <td class="px-6 py-4 text-right border-b border-gray-300 dark:border-gray-700">
-                            <select wire:change="updateStatus({{ $application->id }}, $event.target.value)"
+                            <select onchange="@this.call('updateStatus', {{ $application->id }}, this.value)"
                                 class="px-3 py-1 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm focus:ring-indigo-500 focus:border-indigo-500">
                                 <option value="pending" {{ $application->status == 'pending' ? 'selected' : '' }}>
                                     Pending</option>
-                                <option value="approved" {{ $application->status == 'approved' ? 'selected' : '' }}>
-                                    Approved</option>
+                                <option value="accepted" {{ $application->status == 'accepted' ? 'selected' : '' }}>
+                                    Accepted</option>
                                 <option value="rejected" {{ $application->status == 'rejected' ? 'selected' : '' }}>
                                     Rejected</option>
                             </select>
