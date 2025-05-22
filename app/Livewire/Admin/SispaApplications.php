@@ -19,7 +19,7 @@ class SispaApplications extends Component
     public function updateStatus($id, $status)
     {
         $application = SispaMember::findOrFail($id);
-        $application->status = $status;
+        $application->status = (string) $status;
         $application->save();
 
         // Send email notification

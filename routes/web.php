@@ -10,9 +10,11 @@ use App\Livewire\Admin\AttendanceManager;
 use App\Livewire\Admin\Report;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\NewsManager;
+use App\Livewire\Admin\SispaApplications;
 use App\Http\Controllers\SispaAdminController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\SispaController;
+use App\Http\Controllers\Admin\SispaApplicationController;
 
 Route::post('/sispa/register', [SispaController::class, 'register'])->name('sispa.register');
 Route::get('/sispa/register', [SispaController::class, 'showRegisterForm'])->name('sispa.register.form');
@@ -41,7 +43,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('admin/members', Members::class)->name('admin.members');
     Route::get('admin/attendance', AttendanceManager::class)->name('admin.attendance');
     Route::get('admin/report', Report::class)->name('admin.report');
-    Route::get('admin/sispa-applications', [SispaAdminController::class, 'index'])->name('admin.sispa.index');
+    Route::get('admin/sispa-applications', SispaApplications::class)->name('admin.sispa.applications');
     Route::post('admin/sispa-applications/{id}/status', [SispaAdminController::class, 'updateStatus'])->name('admin.sispa.updateStatus');
 });
 
@@ -56,5 +58,8 @@ Route::view('user', 'user')
 
 Route::get('/news/{news}', [WelcomeController::class, 'show'])->name('news.show');
 
+Route::post('admin/sispa-applications/{id}/update-status', [SispaApplicationController::class, 'updateStatus'])
+    ->middleware(['auth', 'role:admin'])
+    ->name('admin.sispa.updateStatus');
 
 require __DIR__.'/auth.php';
