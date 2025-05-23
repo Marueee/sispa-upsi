@@ -956,20 +956,19 @@
         <!-- Team Section -->
         <section id="team" class="team section">
             <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Team</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-            </div><!-- End Section Title -->
+            {{-- <div class="container section-title" data-aos="fade-up">
+                <h2>Galeri</h2>
+                 <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p> 
+            </div> --}}
+            <!-- End Section Title -->
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
                 <div class="row">
                     <div class="col-lg-4 team-intro" data-aos="fade-right" data-aos-delay="200">
                         <div class="team-intro-content">
-                            <h2>Meet Our Experts</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vestibulum dui sed justo
-                                finibus, in
-                                gravida felis iaculis. Suspendisse potenti.</p>
+                            <h2>Galeri Kami</h2>
+                            <p>Lihat sebahagian daripada kerja dan aktiviti kami melalui galeri</p>
                             <div class="team-navigation">
                                 <button class="team-nav-prev"><i class="bi bi-arrow-left"></i></button>
                                 <button class="team-nav-next"><i class="bi bi-arrow-right"></i></button>
@@ -1133,8 +1132,8 @@
         <section id="contact" class="contact section">
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
-                <h2>Contact</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+                <h2>Hubungi</h2>
+                {{-- <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p> --}}
             </div><!-- End Section Title -->
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -1184,7 +1183,7 @@
                                 </div>
                                 <div class="contact-text">
                                     <h4>Waktu Operasi</h4>
-                                    <p>Monday-Friday: 9AM - 6PM</p>
+                                    <p>Isnin-Jumaat: 8AM - 5PM</p>
                                 </div>
                             </div>
                         </div>
@@ -1306,7 +1305,7 @@
         </div>
 
         <div class="container copyright text-center mt-4">
-            <p>© <span>Copyright</span> <strong class="px-1 sitename">MyWebsite</strong> <span>All Rights
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">SISPA UPSI</strong> <span>All Rights
                     Reserved</span></p>
             <div class="credits">
                 <!-- All the links in the footer should remain intact. -->
