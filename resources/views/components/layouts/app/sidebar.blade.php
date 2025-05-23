@@ -26,6 +26,7 @@
                     <flux:navlist.item icon="document-check" :href="route('admin.attendance')" :current="request()->routeIs('admin.attendance')" wire:navigate>{{ __('Attendance') }}</flux:navlist.item>
                     <flux:navlist.item icon="clipboard-document-list" :href="route('admin.report')" :current="request()->routeIs('admin.report')" wire:navigate>{{ __('Report') }}</flux:navlist.item>
                     <flux:navlist.item icon="user-plus" :href="route('admin.sispa.applications')" :current="request()->routeIs('admin.sispa.applications')" wire:navigate>{{ __('Applications') }}</flux:navlist.item>
+                    <flux:navlist.item icon="envelope" :href="route('admin.messages')" :current="request()->routeIs('admin.messages')" wire:navigate>{{ __('Messages') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 

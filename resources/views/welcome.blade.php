@@ -113,7 +113,7 @@
                                     tahan fizikal dan mental.</li>
                             </ul>
                             <div class="hero-cta">
-                             <a href="{{ route('sispa.register.form') }}" class="btn btn-primary">Borang Pendaftaran</a>
+                                <a href="{{ route('sispa.register.form') }}" class="btn btn-primary">Borang Pendaftaran</a>
                             </div>
                         </div>
                     </div>
@@ -1192,7 +1192,9 @@
                             <h3>Hubungi Kami</h3>
                             <p>Sila hubungi kami sekiranya anda mempunyai sebarang pertanyaan. Kami sedia membantu anda sebaik mungkin.</p>
 
-                            <form action="forms/contact.php" method="post" class="php-email-form">
+                            <form action="{{ route('contact.submit') }}" method="POST" class="php-email-form">
+
+                                @csrf
                                 <div class="row">
                                     <div class="col-md-6 form-group">
                                         <input type="text" name="name" class="form-control" id="name"
