@@ -113,7 +113,8 @@
                                     tahan fizikal dan mental.</li>
                             </ul>
                             <div class="hero-cta">
-                                <a href="{{ route('sispa.register.form') }}" class="btn btn-primary">Borang Pendaftaran</a>
+                                <a href="{{ route('sispa.register.form') }}" class="btn btn-primary">Borang
+                                    Pendaftaran</a>
                             </div>
                         </div>
                     </div>
@@ -255,7 +256,8 @@
                                         <i class="bi bi-person-check fs-3"></i>
                                     </div>
                                     <h5 class="mb-2">Warganegara Malaysia</h5>
-                                    <p class="small">Terbuka kepada semua pelajar warganegara Malaysia yang berdaftar di UPSI.</p>
+                                    <p class="small">Terbuka kepada semua pelajar warganegara Malaysia yang berdaftar
+                                        di UPSI.</p>
                                 </div>
                             </div>
 
@@ -266,7 +268,8 @@
                                         <i class="bi bi-clipboard-plus fs-3"></i>
                                     </div>
                                     <h5 class="mb-2">Status Kesihatan Baik</h5>
-                                    <p class="small">Tiada masalah kesihatan serius yang menghalang aktiviti fizikal dan latihan ketenteraan ringan.</p>
+                                    <p class="small">Tiada masalah kesihatan serius yang menghalang aktiviti fizikal
+                                        dan latihan ketenteraan ringan.</p>
                                 </div>
                             </div>
 
@@ -277,7 +280,8 @@
                                         <i class="bi bi-mortarboard fs-3"></i>
                                     </div>
                                     <h5 class="mb-2">Komitmen Akademik</h5>
-                                    <p class="small">Mampu menyeimbangkan jadual kuliah dengan latihan SISPA tanpa menjejaskan prestasi akademik.</p>
+                                    <p class="small">Mampu menyeimbangkan jadual kuliah dengan latihan SISPA tanpa
+                                        menjejaskan prestasi akademik.</p>
                                 </div>
                             </div>
 
@@ -288,7 +292,8 @@
                                         <i class="bi bi-people fs-3"></i>
                                     </div>
                                     <h5 class="mb-2">Kemahiran Bekerja Dalam Kumpulan</h5>
-                                    <p class="small">Mempunyai semangat kerjasama dan sanggup mematuhi disiplin serta arahan pegawai latihan.</p>
+                                    <p class="small">Mempunyai semangat kerjasama dan sanggup mematuhi disiplin serta
+                                        arahan pegawai latihan.</p>
                                 </div>
                             </div>
 
@@ -299,7 +304,8 @@
                                         <i class="bi bi-shield-check fs-3"></i>
                                     </div>
                                     <h5 class="mb-2">Rekod Disiplin Baik</h5>
-                                    <p class="small">Tidak mempunyai rekod tatatertib atau penglibatan dalam aktiviti tidak bermoral.</p>
+                                    <p class="small">Tidak mempunyai rekod tatatertib atau penglibatan dalam aktiviti
+                                        tidak bermoral.</p>
                                 </div>
                             </div>
 
@@ -310,7 +316,8 @@
                                         <i class="bi bi-hourglass-split fs-3"></i>
                                     </div>
                                     <h5 class="mb-2">Ketersediaan Masa</h5>
-                                    <p class="small">Sanggup menghadiri latihan mingguan, perkhemahan, dan aktiviti Kor SISPA sepanjang pengajian.</p>
+                                    <p class="small">Sanggup menghadiri latihan mingguan, perkhemahan, dan aktiviti
+                                        Kor SISPA sepanjang pengajian.</p>
                                 </div>
                             </div>
                         </div>
@@ -495,44 +502,47 @@
                                 data-bs-interval="5000">
                                 <div class="carousel-inner">
                                     @forelse($news as $key => $item)
-                                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
-                                        <div class="service-card h-100">
-                                            @if($item->image)
-                                            <!-- Debug info -->
-                                            <div class="d-none">
-                                                Image path: {{ $item->image }}<br>
-                                                Full URL: {{ asset('storage/' . $item->image) }}
-                                            </div>
-                                            <img src="{{ asset('storage/' . $item->image) }}"
-                                                alt="{{ $item->title }}" class="img-fluid w-100 rounded shadow-sm"
-                                                onerror="this.onerror=null; this.src='{{ asset('build/assets/img/default-news.jpg') }}';">
-                                            @else
-                                            <img src="{{ asset('build/assets/img/default-news.jpg') }}"
-                                                alt="{{ $item->title }}" class="img-fluid w-100 rounded shadow-sm">
-                                            @endif
-                                            <div class="service-content text-center p-3">
-                                                <div class="service-info">
-                                                    <h3><a href="#">{{ $item->title }}</a></h3>
-                                                    <p>{{ Str::limit($item->content, 100) }}</p>
-                                                    <div class="service-action">
-                                                        <a href="{{ route('news.show', $item->id) }}" class="read-more-btn">Baca
-                                                            Selanjutnya <i class="bi bi-arrow-right"></i></a>
+                                        <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
+                                            <div class="service-card h-100">
+                                                @if ($item->image)
+                                                    <!-- Debug info -->
+                                                    <div class="d-none">
+                                                        Image path: {{ $item->image }}<br>
+                                                        Full URL: {{ asset('storage/' . $item->image) }}
+                                                    </div>
+                                                    <img src="{{ asset('storage/' . $item->image) }}"
+                                                        alt="{{ $item->title }}"
+                                                        class="img-fluid w-100 rounded shadow-sm"
+                                                        onerror="this.onerror=null; this.src='{{ asset('build/assets/img/default-news.jpg') }}';">
+                                                @else
+                                                    <img src="{{ asset('build/assets/img/default-news.jpg') }}"
+                                                        alt="{{ $item->title }}"
+                                                        class="img-fluid w-100 rounded shadow-sm">
+                                                @endif
+                                                <div class="service-content text-center p-3">
+                                                    <div class="service-info">
+                                                        <h3><a href="#">{{ $item->title }}</a></h3>
+                                                        <p>{{ Str::limit($item->content, 100) }}</p>
+                                                        <div class="service-action">
+                                                            <a href="{{ route('news.show', $item->id) }}"
+                                                                class="read-more-btn">Baca
+                                                                Selanjutnya <i class="bi bi-arrow-right"></i></a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     @empty
-                                    <div class="carousel-item active">
-                                        <div class="service-card h-100">
-                                            <div class="service-content text-center p-3">
-                                                <div class="service-info">
-                                                    <h3>Tiada Berita</h3>
-                                                    <p>Tiada berita terkini pada masa ini.</p>
+                                        <div class="carousel-item active">
+                                            <div class="service-card h-100">
+                                                <div class="service-content text-center p-3">
+                                                    <div class="service-info">
+                                                        <h3>Tiada Berita</h3>
+                                                        <p>Tiada berita terkini pada masa ini.</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     @endforelse
                                 </div>
 
@@ -580,7 +590,7 @@
                                 <img src="{{ asset('build/assets/img/sispalogo.png') }}" class="img-fluid"
                                     alt="SISPA">
                             </div>
-                            @endfor
+                        @endfor
                     </div>
                 </div>
 
@@ -605,7 +615,7 @@
                                 <img src="{{ asset('build/assets/img/kptlogo.png') }}" class="img-fluid"
                                     alt="KPT">
                             </div>
-                            @endfor
+                        @endfor
                     </div>
                 </div>
 
@@ -1153,7 +1163,8 @@
                                 </div>
                                 <div class="contact-text">
                                     <h4>Lokasi</h4>
-                                    <p>Bilik 07, Tingkat 1, Blok 1, Kampus Sultan Azlan Shah, Universiti Pendidikan Sultan Idris, 35900 Tanjong Malim, Perak Darul Ridzuan</p>
+                                    <p>Bilik 07, Tingkat 1, Blok 1, Kampus Sultan Azlan Shah, Universiti Pendidikan
+                                        Sultan Idris, 35900 Tanjong Malim, Perak Darul Ridzuan</p>
                                 </div>
                             </div>
 
@@ -1190,38 +1201,48 @@
 
                         <div class="contact-form-container" data-aos="fade-up" data-aos-delay="400">
                             <h3>Hubungi Kami</h3>
-                            <p>Sila hubungi kami sekiranya anda mempunyai sebarang pertanyaan. Kami sedia membantu anda sebaik mungkin.</p>
+                            <p>Sila hubungi kami sekiranya anda mempunyai sebarang pertanyaan. Kami sedia membantu anda
+                                sebaik mungkin.</p>
 
+                            <!-- Laravel Alert Messages -->
+                            @if (session('success'))
+                                <div class="alert alert-success my-3">
+                                    Mesej anda berjaya dihantar.
+                                </div>
+                            @endif
+
+                            @if ($errors->any())
+                                <div class="alert alert-danger my-3">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <form action="{{ route('contact.submit') }}" method="POST" class="php-email-form">
-
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6 form-group">
                                         <input type="text" name="name" class="form-control" id="name"
-                                            placeholder="Your Name" required="">
+                                            placeholder="Your Name" required value="{{ old('name') }}">
                                     </div>
                                     <div class="col-md-6 form-group mt-3 mt-md-0">
                                         <input type="email" class="form-control" name="email" id="email"
-                                            placeholder="Your Email" required="">
+                                            placeholder="Your Email" required value="{{ old('email') }}">
                                     </div>
                                 </div>
                                 <div class="form-group mt-3">
                                     <input type="text" class="form-control" name="subject" id="subject"
-                                        placeholder="Subject" required="">
+                                        placeholder="Subject" required value="{{ old('subject') }}">
                                 </div>
                                 <div class="form-group mt-3">
-                                    <textarea class="form-control" name="message" rows="5" placeholder="Message" required=""></textarea>
+                                    <textarea class="form-control" name="message" rows="5" placeholder="Message" required>{{ old('message') }}</textarea>
                                 </div>
 
-                                <div class="my-3">
-                                    <div class="loading">Loading</div>
-                                    <div class="error-message"></div>
-                                    <div class="sent-message">Your message has been sent. Thank you!</div>
-                                </div>
-
-                                <div class="form-submit">
+                                <div class="form-submit mt-3">
                                     <button type="submit">Send Message</button>
-                                    <div class="social-links">
+                                    <div class="social-links mt-3">
                                         <a href="#"><i class="bi bi-twitter"></i></a>
                                         <a href="#"><i class="bi bi-facebook"></i></a>
                                         <a href="#"><i class="bi bi-instagram"></i></a>
@@ -1327,7 +1348,7 @@
 
     <!-- Vendor JS Files -->
     <script src="{{ asset('build/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('build/assets/vendor/php-email-form/validate.js') }}"></script>
+    {{-- <script src="{{ asset('build/assets/vendor/php-email-form/validate.js') }}"></script> --}}
     <script src="{{ asset('build/assets/vendor/aos/aos.js') }}"></script>
     <script src="{{ asset('build/assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
     <script src="{{ asset('build/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>

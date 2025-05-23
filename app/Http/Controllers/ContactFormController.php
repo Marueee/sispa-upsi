@@ -18,7 +18,7 @@ public function store(Request $request)
 
     ContactMessage::create($validated);
 
-    return redirect()->back()->with('success', 'Your message has been sent successfully!');
+    return redirect()->back()->with('success', 'Mesej anda berjaya dihantar.');
 }
 
 }

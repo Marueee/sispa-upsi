@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\SispaMember;
+use App\Models\Application;
 
 class SispaController extends Controller
 {
@@ -19,7 +19,7 @@ class SispaController extends Controller
             'name' => 'required|string|max:255',
             'ic' => 'required|string|max:20',
             'email' => 'required|email',
-            'no_matrik' => 'required|string|unique:sispa_members,no_matrik',
+            'no_matrik' => 'required|string|unique:application,no_matrik',
             'height' => 'required|numeric|min:50',
             'weight' => 'required|numeric|min:10',
             'tempoh' => 'required|integer|min:1',
@@ -33,7 +33,7 @@ class SispaController extends Controller
         $kelayakan = ($bmi >= 18.5 && $bmi < 25 && $request->tempoh >= 4) ? 'Layak Memohon' : 'Tidak Layak';
 
         // Store in DB
-        SispaMember::create([
+        Application::create([
             'name' => $request->name,
             'ic' => $request->ic,
             'email' => $request->email,

@@ -8,7 +8,7 @@ class CreateSispaMembersTable extends Migration
 {
     public function up()
     {
-        Schema::create('sispa_members', function (Blueprint $table) {
+        Schema::create('application', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('ic');
@@ -26,6 +26,6 @@ class CreateSispaMembersTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('sispa_members');
+        Schema::dropIfExists('application');
     }
 }
