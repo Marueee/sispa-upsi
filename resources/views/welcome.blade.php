@@ -624,9 +624,6 @@
 
 
 
-
-
-
         <!-- How We Work Section -->
         <section id="how-we-work" class="how-we-work section">
 
