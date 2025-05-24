@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -14,7 +15,9 @@ class WelcomeController extends Controller
                     ->take(4)
                     ->get();
 
-        return view('welcome', compact('news'));
+        $gallery = Gallery::where('status', 'published')->latest()->get();
+
+        return view('welcome', compact('news','gallery'));
     }
 
     public function show(News $news)

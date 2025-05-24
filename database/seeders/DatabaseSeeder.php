@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         UserSeeder::class,
         MemberSeeder::class,
         NewsSeeder::class,
+        GallerySeeder::class,
     ]);
 }
 }

@@ -4,7 +4,6 @@ use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
-use App\Livewire\Admin\Posts;
 use App\Livewire\Admin\Members;
 use App\Livewire\Admin\AttendanceManager;
 use App\Livewire\Admin\Report;
@@ -43,7 +42,6 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('admin/dashboard', Dashboard::class)->name('dashboard');
-    Route::get('admin/posts', Posts::class)->name('admin.posts');
     Route::get('admin/news', NewsManager::class)->name('admin.news');
     Route::get('admin/members', Members::class)->name('admin.members');
     Route::get('admin/attendance', AttendanceManager::class)->name('admin.attendance');
@@ -51,7 +49,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('admin/report', Report::class)->name('admin.report');
     Route::get('admin/sispa-applications', SispaApplications::class)->name('admin.sispa.applications');
     Route::post('admin/sispa-applications/{id}/status', [SispaAdminController::class, 'updateStatus'])->name('admin.sispa.updateStatus');
-    
+
 });
 
 

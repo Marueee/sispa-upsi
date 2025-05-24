@@ -476,7 +476,7 @@
         <!-- Berita Section -->
         <section id="berita" class="services section">
 
-            <!-- Section Title -->
+            <!-- Section Berita -->
             <div class="container section-title" data-aos="fade-up">
                 <h2 class="section-heading">Berita Terkini</h2>
                 <p>Ikuti perkembangan dan aktiviti semasa Kor SISPA UPSI</p>
@@ -498,65 +498,76 @@
                         </div>
 
                         <div class="col-lg-6 mx-auto">
-                            <div id="beritaCarousel" class="carousel slide" data-bs-ride="carousel"
-                                data-bs-interval="5000">
-                                <div class="carousel-inner">
-                                    @forelse($news as $key => $item)
-                                        <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
-                                            <div class="service-card h-100">
-                                                @if ($item->image)
-                                                    <!-- Debug info -->
-                                                    <div class="d-none">
-                                                        Image path: {{ $item->image }}<br>
-                                                        Full URL: {{ asset('storage/' . $item->image) }}
-                                                    </div>
-                                                    <img src="{{ asset('storage/' . $item->image) }}"
-                                                        alt="{{ $item->title }}"
-                                                        class="img-fluid w-100 rounded shadow-sm"
-                                                        onerror="this.onerror=null; this.src='{{ asset('build/assets/img/default-news.jpg') }}';">
-                                                @else
-                                                    <img src="{{ asset('build/assets/img/default-news.jpg') }}"
-                                                        alt="{{ $item->title }}"
-                                                        class="img-fluid w-100 rounded shadow-sm">
-                                                @endif
-                                                <div class="service-content text-center p-3">
-                                                    <div class="service-info">
-                                                        <h3><a href="#">{{ $item->title }}</a></h3>
-                                                        <p>{{ Str::limit($item->content, 100) }}</p>
-                                                        <div class="service-action">
-                                                            <a href="{{ route('news.show', $item->id) }}"
-                                                                class="read-more-btn">Baca
-                                                                Selanjutnya <i class="bi bi-arrow-right"></i></a>
-                                                        </div>
+                            <div class="berita-carousel swiper init-swiper">
+                                <script type="application/json" class="swiper-config">
+                                    {
+                                        "loop": true,
+                                        "speed": 800,
+                                        "autoplay": {
+                                            "delay": 5000
+                                        },
+                                        "slidesPerView": 1,
+                                        "spaceBetween": 20,
+                                        "navigation": {
+                                            "nextEl": ".berita-nav-next",
+                                            "prevEl": ".berita-nav-prev"
+                                        }
+                                    }
+                                </script>
+                                <div class="swiper-wrapper">
+                                    @forelse($news as $item)
+                                    <div class="swiper-slide">
+                                        <div class="service-card h-100">
+                                            @if ($item->image)
+                                                <img src="{{ asset('storage/' . $item->image) }}"
+                                                     alt="{{ $item->title }}"
+                                                     class="img-fluid w-100 rounded shadow-sm"
+                                                     loading="lazy"
+                                                     onerror="this.onerror=null; this.src='{{ asset('build/assets/img/default-news.jpg') }}';">
+                                            @else
+                                                <img src="{{ asset('build/assets/img/default-news.jpg') }}"
+                                                     alt="{{ $item->title }}"
+                                                     class="img-fluid w-100 rounded shadow-sm">
+                                            @endif
+                                            <div class="service-content text-center p-3">
+                                                <div class="service-info">
+                                                    <h3><a href="#">{{ $item->title }}</a></h3>
+                                                    <p>{{ Str::limit($item->content, 100) }}</p>
+                                                    <div class="service-action">
+                                                        <a href="{{ route('news.show', $item->id) }}"
+                                                           class="read-more-btn">Baca Selanjutnya
+                                                           <i class="bi bi-arrow-right"></i>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
                                     @empty
-                                        <div class="carousel-item active">
-                                            <div class="service-card h-100">
-                                                <div class="service-content text-center p-3">
-                                                    <div class="service-info">
-                                                        <h3>Tiada Berita</h3>
-                                                        <p>Tiada berita terkini pada masa ini.</p>
-                                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="service-card h-100">
+                                            <div class="service-content text-center p-3">
+                                                <div class="service-info">
+                                                    <h3>Tiada Berita</h3>
+                                                    <p>Tiada berita terkini pada masa ini.</p>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
                                     @endforelse
                                 </div>
-
-                                <!-- Custom Stylish Navigation Buttons -->
-                                <div class="berita-navigation text-center mt-4">
-                                    <button class="berita-nav-prev custom-arrow-btn me-2">
-                                        <i class="bi bi-arrow-left"></i>
-                                    </button>
-                                    <button class="berita-nav-next custom-arrow-btn">
-                                        <i class="bi bi-arrow-right"></i>
-                                    </button>
-                                </div>
-
                             </div>
+
+                            <!-- Navigation Buttons -->
+                            <div class="berita-navigation text-center mt-4">
+                                <button class="berita-nav-prev custom-arrow-btn me-2">
+                                    <i class="bi bi-arrow-left"></i>
+                                </button>
+                                <button class="berita-nav-next custom-arrow-btn">
+                                    <i class="bi bi-arrow-right"></i>
+                                </button>
+                            </div>
+
                         </div>
 
                     </div>
@@ -965,7 +976,7 @@
             <!-- Section Title -->
             {{-- <div class="container section-title" data-aos="fade-up">
                 <h2>Galeri</h2>
-                 <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p> 
+                 <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
             </div> --}}
             <!-- End Section Title -->
 
@@ -1011,122 +1022,42 @@
                                 }
                             </script>
                             <div class="swiper-wrapper">
-
+                                @forelse($gallery as $item)
                                 <div class="swiper-slide">
                                     <div class="member-card">
                                         <div class="member-image">
-                                            <img src="assets/img/person/person-m-3.webp" class="img-fluid"
-                                                alt="" loading="lazy">
+                                            <img src="{{ asset('storage/' . $item->image) }}"
+                                                 class="img-fluid"
+                                                 alt="{{ $item->title }}"
+                                                 loading="lazy"
+                                                 onerror="this.onerror=null; this.src='{{ asset('build/assets/img/default-gallery.jpg') }}';">
                                         </div>
                                         <div class="member-info">
-                                            <h3>Marcus Wilson</h3>
-                                            <span>Chief Technology Officer</span>
-                                            <div class="member-social">
-                                                <a href="#"><i class="bi bi-twitter-x"></i></a>
-                                                <a href="#"><i class="bi bi-facebook"></i></a>
-                                                <a href="#"><i class="bi bi-linkedin"></i></a>
-                                            </div>
+                                            <h3>{{ $item->title }}</h3>
                                             <div class="member-bio">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                                                    tellus, luctus nec
-                                                    ullamcorper mattis.</p>
+                                                <p>{{ $item->description }}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div><!-- End slide item -->
-
+                                @empty
                                 <div class="swiper-slide">
                                     <div class="member-card">
                                         <div class="member-image">
-                                            <img src="assets/img/person/person-f-5.webp" class="img-fluid"
-                                                alt="" loading="lazy">
+                                            <img src="{{ asset('build/assets/img/default-gallery.jpg') }}"
+                                                 class="img-fluid"
+                                                 alt="No images"
+                                                 loading="lazy">
                                         </div>
                                         <div class="member-info">
-                                            <h3>Sophia Reynolds</h3>
-                                            <span>Product Designer</span>
-                                            <div class="member-social">
-                                                <a href="#"><i class="bi bi-twitter-x"></i></a>
-                                                <a href="#"><i class="bi bi-facebook"></i></a>
-                                                <a href="#"><i class="bi bi-linkedin"></i></a>
-                                            </div>
+                                            <h3>Tiada Gambar</h3>
                                             <div class="member-bio">
-                                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                                                    dolore eu fugiat nulla
-                                                    pariatur.</p>
+                                                <p>Tiada gambar dalam galeri pada masa ini.</p>
                                             </div>
                                         </div>
                                     </div>
-                                </div><!-- End slide item -->
-
-                                <div class="swiper-slide">
-                                    <div class="member-card">
-                                        <div class="member-image">
-                                            <img src="assets/img/person/person-m-8.webp" class="img-fluid"
-                                                alt="" loading="lazy">
-                                        </div>
-                                        <div class="member-info">
-                                            <h3>Daniel Chen</h3>
-                                            <span>Marketing Specialist</span>
-                                            <div class="member-social">
-                                                <a href="#"><i class="bi bi-twitter-x"></i></a>
-                                                <a href="#"><i class="bi bi-facebook"></i></a>
-                                                <a href="#"><i class="bi bi-linkedin"></i></a>
-                                            </div>
-                                            <div class="member-bio">
-                                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                                                    officia deserunt mollit
-                                                    anim id est laborum.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- End slide item -->
-
-                                <div class="swiper-slide">
-                                    <div class="member-card">
-                                        <div class="member-image">
-                                            <img src="assets/img/person/person-f-9.webp" class="img-fluid"
-                                                alt="" loading="lazy">
-                                        </div>
-                                        <div class="member-info">
-                                            <h3>Olivia Thompson</h3>
-                                            <span>Lead Developer</span>
-                                            <div class="member-social">
-                                                <a href="#"><i class="bi bi-twitter-x"></i></a>
-                                                <a href="#"><i class="bi bi-facebook"></i></a>
-                                                <a href="#"><i class="bi bi-linkedin"></i></a>
-                                            </div>
-                                            <div class="member-bio">
-                                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                                                    accusantium doloremque
-                                                    laudantium.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- End slide item -->
-
-                                <div class="swiper-slide">
-                                    <div class="member-card">
-                                        <div class="member-image">
-                                            <img src="assets/img/person/person-m-12.webp" class="img-fluid"
-                                                alt="" loading="lazy">
-                                        </div>
-                                        <div class="member-info">
-                                            <h3>Jason Parker</h3>
-                                            <span>UI/UX Designer</span>
-                                            <div class="member-social">
-                                                <a href="#"><i class="bi bi-twitter-x"></i></a>
-                                                <a href="#"><i class="bi bi-facebook"></i></a>
-                                                <a href="#"><i class="bi bi-linkedin"></i></a>
-                                            </div>
-                                            <div class="member-bio">
-                                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                                                    fugit, sed quia
-                                                    consequuntur magni.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- End slide item -->
-
+                                </div>
+                                @endforelse
                             </div>
                         </div>
                     </div>
