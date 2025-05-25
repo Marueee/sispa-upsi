@@ -59,8 +59,8 @@
                     <li class="dropdown"><a href="#"><span>Borang</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
-                            <li><a href="#">Dropdown 1</a></li>
-                            <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i
+                            <li><a href="{{ route('sispa.register.form') }}" >Borang Pendaftaran</a></li>
+                            {{-- <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i
                                         class="bi bi-chevron-down toggle-dropdown"></i></a>
                                 <ul>
                                     <li><a href="#">Deep Dropdown 1</a></li>
@@ -68,11 +68,11 @@
                                     <li><a href="#">Deep Dropdown 3</a></li>
                                     <li><a href="#">Deep Dropdown 4</a></li>
                                     <li><a href="#">Deep Dropdown 5</a></li>
-                                </ul>
+                                </ul> --}}
                             </li>
-                            <li><a href="#">Dropdown 2</a></li>
+                            {{-- <li><a href="#">Dropdown 2</a></li>
                             <li><a href="#">Dropdown 3</a></li>
-                            <li><a href="#">Dropdown 4</a></li>
+                            <li><a href="#">Dropdown 4</a></li> --}}
                         </ul>
                     </li>
                     <li><a href="#contact">Hubungi</a></li>
@@ -634,7 +634,7 @@
         </section>
 
 
-
+{{-- 
         <!-- How We Work Section -->
         <section id="how-we-work" class="how-we-work section">
 
@@ -969,7 +969,7 @@
                     </div>
                 </div>
             </div>
-        </section><!-- /Call To Action Section -->
+        </section><!-- /Call To Action Section --> --}}
 
         <!-- Team Section -->
         <section id="team" class="team section">
