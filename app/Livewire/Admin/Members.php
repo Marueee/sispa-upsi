@@ -4,7 +4,8 @@ namespace App\Livewire\Admin;
 
 use Livewire\Component;
 use App\Models\Member;
-use Illuminate\Support\Facades\Log;  // Add this import
+use Illuminate\Support\Facades\Log;  
+use Livewire\Attributes\On;
 
 class Members extends Component
 {
@@ -75,11 +76,7 @@ class Members extends Component
             $this->dispatch('memberCreated');
         } catch (\Exception $e) {
             Log::error('Create error: ' . $e->getMessage());
-            $this->dispatch('showAlert', [
-                'type' => 'error',
-                'title' => 'Error!',
-                'text' => 'Failed to create member'
-            ]);
+            $this->dispatch('operationFailed', 'Failed to create member');
         }
     }
 
@@ -110,27 +107,20 @@ class Members extends Component
         $member->update($validatedData);
         $this->resetForm();
 
-        $this->dispatch('showAlert', [
-            'type' => 'success',
-            'title' => 'Success!',
-            'text' => 'Member updated successfully!'
-        ]);
+        $this->dispatch('memberUpdated');
     }
 
-    public function delete($id)
+    #[On('deleteMember')]
+    public function delete($memberId)
     {
         try {
-            $member = Member::findOrFail($id);
-            $member->delete();
-            $this->loadMembers();
-
-            // Dispatch success event for SweetAlert
-            $this->dispatch('memberDeleted');
+            $member = Member::find($memberId);
+            if ($member) {
+                $member->delete();
+                $this->dispatch('memberDeleted');
+            }
         } catch (\Exception $e) {
-            Log::error('Delete error: ' . $e->getMessage());
-
-            // Dispatch error event for SweetAlert
-            $this->dispatch('deleteFailed');
+            $this->dispatch('operationFailed', ['message' => 'Failed to delete member']);
         }
     }
 

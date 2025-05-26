@@ -82,8 +82,10 @@
                             <td class="px-6 py-4 text-right space-x-3">
                                 <button wire:click="edit({{ $item->id }})"
                                     class="text-indigo-600 dark:text-indigo-400 hover:underline">Edit</button>
-                                <button wire:click="delete({{ $item->id }})"
-                                    class="text-red-600 dark:text-red-400 hover:underline">Delete</button>
+                                <button onclick="confirmDelete({{ $item->id }})" 
+                                    class="text-red-600 hover:text-red-900">
+                                    Delete
+                                </button>
                             </td>
                         </tr>
                     @endforeach
@@ -91,4 +93,78 @@
             </table>
         </div>
     </div>
+
+    @push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('livewire:initialized', () => {
+            // Create success message
+            Livewire.on('galleryCreated', () => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: 'Gallery item has been created successfully.',
+                    timer: 2000,
+                    showConfirmButton: false,
+                    position: 'center'
+                });
+            });
+
+            // Update success message
+            Livewire.on('galleryUpdated', () => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: 'Gallery item has been updated successfully.',
+                    timer: 2000,
+                    showConfirmButton: false,
+                    position: 'center'
+                });
+            });
+
+            // Delete success message
+            Livewire.on('galleryDeleted', () => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Deleted!',
+                    text: 'Gallery item has been deleted successfully.',
+                    timer: 2000,
+                    showConfirmButton: false,
+                    position: 'center'
+                });
+            });
+
+            // Error message
+            Livewire.on('error', (message) => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: message,
+                    timer: 2000,
+                    showConfirmButton: false,
+                    position: 'center'
+                });
+            });
+        });
+
+        // Delete confirmation
+        window.confirmDelete = (id) => {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#ef4444',
+                cancelButtonColor: '#6b7280',
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'Cancel',
+                position: 'center'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Livewire.dispatch('deleteGallery', { galleryId: id });
+                }
+            });
+        }
+    </script>
+    @endpush
 </div>

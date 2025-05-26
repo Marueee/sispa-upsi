@@ -7,9 +7,12 @@ use App\Models\Member;
 use App\Models\Attendance;
 use Illuminate\Support\Facades\Log;  // Add this line
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class AttendanceManager extends Component
 {
+    use WithPagination;
+
     public $selectedDate = '';
     public $selectedEventId = '';
     public $eventData = [
@@ -24,6 +27,8 @@ class AttendanceManager extends Component
     public $attendance = [];
     public $selectAll = false;
     public $selectedBatch = '';
+    public $perPage = 10; // Added property for pagination
+    public $search = '';
 
     public function mount()
     {
@@ -82,6 +87,17 @@ class AttendanceManager extends Component
         }
     }
 
+    public function getMembers()
+    {
+        $query = Member::query();
+
+        if ($this->selectedBatch) {
+            $query->where('batch', $this->selectedBatch);
+        }
+
+        return $query->orderBy('name')->paginate($this->perPage);
+    }
+
     public function getGroupedMembersProperty()
     {
         $query = Member::query();
@@ -100,17 +116,25 @@ class AttendanceManager extends Component
 
     public function render()
     {
+        $members = Member::query()
+            ->when($this->selectedBatch, function($query) {
+                return $query->where('batch', $this->selectedBatch);
+            })
+            ->when($this->search, function($query) {
+                return $query->where('name', 'like', '%' . $this->search . '%')
+                    ->orWhere('matric_no', 'like', '%' . $this->search . '%');
+            })
+            ->orderBy('name')
+            ->paginate($this->perPage);
+
+        // If batch is selected, group the paginated results
+        if ($this->selectedBatch) {
+            $groupedMembers = $members->groupBy('batch');
+        }
+
         return view('livewire.admin.attendance', [
-            'members' => Member::orderBy('batch')->orderBy('name')->get(),
-            'groupedMembers' => $this->selectedBatch ?
-                Member::where('batch', $this->selectedBatch)
-                      ->orderBy('name')
-                      ->get()
-                      ->groupBy('batch') :
-                Member::orderBy('batch')
-                      ->orderBy('name')
-                      ->get()
-                      ->groupBy('batch'),
+            'members' => $members,
+            'groupedMembers' => $this->selectedBatch ? $groupedMembers : null,
             'batches' => Member::distinct()->pluck('batch')->sort(),
             'existingEvents' => $this->selectedDate ?
                 Event::whereDate('date', $this->selectedDate)

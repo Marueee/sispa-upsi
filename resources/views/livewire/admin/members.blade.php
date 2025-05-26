@@ -97,9 +97,9 @@
                                 </svg>
                                 Edit
                             </button>
-                            <button wire:click="delete({{ $member->id }})"
-                                class="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded inline-flex items-center"
-                                onclick="return confirm('Are you sure you want to delete this member?')">
+                            <button type="button"
+                                onclick="confirmDelete({{ $member->id }})"
+                                class="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded inline-flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -122,37 +122,75 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
             document.addEventListener('livewire:initialized', () => {
+                // Member deleted success message
                 Livewire.on('memberDeleted', () => {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Success!',
-                        text: 'Member deleted successfully!',
+                        title: 'Deleted!',
+                        text: 'Member has been deleted successfully.',
                         timer: 2000,
-                        showConfirmButton: false
+                        showConfirmButton: false,
+                        position: 'center'
                     });
                 });
 
-                Livewire.on('deleteFailed', () => {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error!',
-                        text: 'Failed to delete member',
-                        timer: 2000,
-                        showConfirmButton: false
-                    });
-                });
-
+                // Member created success message
                 Livewire.on('memberCreated', () => {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Success!',
-                        text: 'Member added successfully!',
+                        title: 'Added!',
+                        text: 'New member has been added successfully.',
                         timer: 2000,
-                        showConfirmButton: false
+                        showConfirmButton: false,
+                        position: 'center'
                     });
                 });
 
-                // Add this new event listener
+                // Member updated success message
+                Livewire.on('memberUpdated', () => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Updated!',
+                        text: 'Member details have been updated successfully.',
+                        timer: 2000,
+                        showConfirmButton: false,
+                        position: 'center'
+                    });
+                });
+
+                // Error message for failed operations
+                Livewire.on('operationFailed', (message) => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error!',
+                        text: message || 'Operation failed. Please try again.',
+                        timer: 2000,
+                        showConfirmButton: false,
+                        position: 'center'
+                    });
+                });
+
+                // Delete confirmation
+                window.confirmDelete = (id) => {
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#ef4444',
+                        cancelButtonColor: '#6b7280',
+                        confirmButtonText: 'Yes, delete it!',
+                        cancelButtonText: 'Cancel',
+                        position: 'center'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Change this line to call the Livewire method directly
+                            Livewire.dispatch('deleteMember', { memberId: id });
+                        }
+                    });
+                }
+
+                // Scroll to form when editing
                 Livewire.on('scrollToForm', () => {
                     document.getElementById('memberForm').scrollIntoView({
                         behavior: 'smooth',

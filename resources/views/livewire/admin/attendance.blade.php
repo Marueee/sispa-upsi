@@ -5,13 +5,12 @@
         {{-- Date Selection --}}
         <div class="mb-6">
             <label class="block text-sm font-medium mb-1">Select Date *</label>
-            <input type="date"
-                wire:model.live="selectedDate"
+            <input type="date" wire:model.live="selectedDate"
                 class="w-full md:w-1/3 border rounded px-3 py-2 border-gray-300 dark:border-gray-600">
         </div>
 
         {{-- Event Selection (shows only when date is selected) --}}
-        @if($selectedDate)
+        @if ($selectedDate)
             <div class="mb-6">
                 <label class="block text-sm font-medium mb-1">Select Event</label>
                 <select wire:model.live="selectedEventId"
@@ -65,21 +64,33 @@
             {{-- Attendance Section --}}
             @if ($members->isNotEmpty())
                 <div class="overflow-x-auto mt-4">
-                    {{-- Batch Filter --}}
+                    {{-- Batch Filter and Per Page Selection --}}
                     <div class="mb-4 flex items-center space-x-4">
                         <div>
                             <label class="block text-sm font-medium mb-1">Filter by Batch:</label>
                             <select wire:model.live="selectedBatch"
-        <select wire:model.live="selectedBatch" id="batchFilter" class="border rounded px-3 py-2  border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                id="batchFilter"
+                                class="border rounded px-3 py-2 border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                                 <option value="">All Batches</option>
                                 @foreach ($batches as $batch)
                                     <option value="{{ $batch }}">{{ $batch }}</option>
                                 @endforeach
                             </select>
                         </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Items per page:</label>
+                            <select wire:model.live="perPage"
+                                class="border rounded px-3 py-2 border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
                     </div>
 
-                    @if($selectedBatch)
+                    @if ($selectedBatch)
                         {{-- Show grouped tables when batch is selected --}}
                         @foreach ($groupedMembers as $batch => $batchMembers)
                             <div class="mb-8">
@@ -88,11 +99,11 @@
                                     <thead>
                                         <tr>
                                             <th class="border px-4 py-2 text-center w-20">
-                                                <input type="checkbox"
-                                                    wire:model.live="selectAll"
+                                                <input type="checkbox" wire:model.live="selectAll"
                                                     class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
                                             </th>
                                             <th class="border px-4 py-2 text-left">Name</th>
+                                            <th class="border px-4 py-2 text-center">Matric No</th>
                                             <th class="border px-4 py-2 text-center">Batch</th>
                                         </tr>
                                     </thead>
@@ -105,6 +116,7 @@
                                                         class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
                                                 </td>
                                                 <td class="border px-4 py-2">{{ $member->name }}</td>
+                                                <td class="border px-4 py-2 text-center">{{ $member->matric_no }}</td>
                                                 <td class="border px-4 py-2 text-center">{{ $member->batch }}</td>
                                             </tr>
                                         @endforeach
@@ -118,11 +130,11 @@
                             <thead>
                                 <tr>
                                     <th class="border px-4 py-2 text-center w-20">
-                                        <input type="checkbox"
-                                            wire:model.live="selectAll"
+                                        <input type="checkbox" wire:model.live="selectAll"
                                             class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
                                     </th>
                                     <th class="border px-4 py-2 text-left">Name</th>
+                                    <th class="border px-4 py-2 text-center">Matric No</th>
                                     <th class="border px-4 py-2 text-center">Batch</th>
                                 </tr>
                             </thead>
@@ -130,17 +142,22 @@
                                 @foreach ($members as $member)
                                     <tr>
                                         <td class="border px-4 py-2 text-center">
-                                            <input type="checkbox"
-                                                wire:model.live="attendance.{{ $member->id }}"
+                                            <input type="checkbox" wire:model.live="attendance.{{ $member->id }}"
                                                 class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
                                         </td>
                                         <td class="border px-4 py-2">{{ $member->name }}</td>
+                                        <td class="border px-4 py-2 text-center">{{ $member->matric_no }}</td>
                                         <td class="border px-4 py-2 text-center">{{ $member->batch }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     @endif
+
+                    {{-- Add pagination links below the table --}}
+                    <div class="mt-4">
+                        {{ $members->links() }}
+                    </div>
                 </div>
             @else
                 <div class="text-center py-4 text-gray-500">
@@ -156,7 +173,13 @@
                             d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                             clip-rule="evenodd" />
                     </svg>
-                    <span>Create Event & Save Attendance</span>
+                    <span>
+                        @if ($selectedEventId)
+                            Save Attendance
+                        @else
+                            Create Event & Save Attendance
+                        @endif
+                    </span>
                 </button>
             </div>
         </form>
@@ -172,21 +195,35 @@
                     e.preventDefault();
 
                     Swal.fire({
-                        title: 'Save Attendance?',
-                        text: "Are you sure you want to save this attendance record?",
+                        title: 'Simpan Kehadiran?',
+                        text: "Adakah anda pasti untuk menyimpan rekod kehadiran ini?",
                         icon: 'question',
                         showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Yes, save it!',
-                        width: '32em', // Make the modal wider
-                        padding: '2em', // Add more padding
+                        confirmButtonColor: '#22C55E',
+                        cancelButtonColor: '#EF4444',
+                        confirmButtonText: 'Ya, simpan!',
+                        cancelButtonText: 'Batal',
+                        width: '32em',
+                        padding: '2em',
                         customClass: {
-                            title: 'text-xl', // Larger title
-                            popup: 'swal2-large', // Custom class for larger popup
+                            title: 'text-xl font-bold',
+                            popup: 'swal2-large',
+                            confirmButton: 'bg-green-500 hover:bg-green-600',
+                            cancelButton: 'bg-red-500 hover:bg-red-600'
                         }
                     }).then((result) => {
                         if (result.isConfirmed) {
+                            // Show loading state
+                            Swal.fire({
+                                title: 'Sedang Diproses...',
+                                html: 'Sila tunggu sebentar.',
+                                allowOutsideClick: false,
+                                allowEscapeKey: false,
+                                didOpen: () => {
+                                    Swal.showLoading()
+                                }
+                            });
+
                             @this.dispatch('submit');
                         }
                     });
@@ -196,15 +233,15 @@
                 Livewire.on('attendanceSaved', () => {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Success!',
-                        text: 'Attendance has been saved successfully!',
+                        title: 'Berjaya!',
+                        text: 'Kehadiran telah berjaya disimpan!',
                         timer: 3000,
                         timerProgressBar: true,
                         showConfirmButton: false,
                         width: '32em',
                         padding: '2em',
                         customClass: {
-                            title: 'text-2xl font-bold',
+                            title: 'text-2xl font-bold text-green-600',
                             popup: 'swal2-large',
                             htmlContainer: 'text-lg'
                         }
@@ -215,8 +252,8 @@
                 Livewire.on('attendanceError', () => {
                     Swal.fire({
                         icon: 'error',
-                        title: 'Error!',
-                        text: 'Failed to save attendance. Please try again.',
+                        title: 'Ralat!',
+                        text: 'Gagal menyimpan kehadiran. Sila cuba lagi.',
                         timer: 3000,
                         timerProgressBar: true,
                         showConfirmButton: false,
@@ -224,25 +261,6 @@
                         padding: '2em',
                         customClass: {
                             title: 'text-2xl font-bold text-red-600',
-                            popup: 'swal2-large',
-                            htmlContainer: 'text-lg'
-                        }
-                    });
-                });
-
-                // Keep existing alert handler with larger styling
-                Livewire.on('showAlert', (event) => {
-                    Swal.fire({
-                        title: event.title,
-                        text: event.message,
-                        icon: event.type,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        showConfirmButton: false,
-                        width: '32em',
-                        padding: '2em',
-                        customClass: {
-                            title: 'text-2xl font-bold',
                             popup: 'swal2-large',
                             htmlContainer: 'text-lg'
                         }

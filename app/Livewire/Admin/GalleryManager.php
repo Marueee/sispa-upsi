@@ -5,6 +5,7 @@ namespace App\Livewire\Admin;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Gallery;
+use Livewire\Attributes\On;
 
 class GalleryManager extends Component
 {
@@ -42,8 +43,7 @@ class GalleryManager extends Component
             'image' => $imagePath,
         ]);
 
-        session()->flash('message', 'Gallery item created successfully.');
-
+        $this->dispatch('galleryCreated');
         $this->resetFields();
         $this->loadGalleryItems();
     }
@@ -79,19 +79,22 @@ class GalleryManager extends Component
 
         $item->save();
 
-        session()->flash('message', 'Gallery item updated successfully.');
-
+        $this->dispatch('galleryUpdated');
         $this->resetFields();
         $this->loadGalleryItems();
     }
 
-    public function delete($id)
+    #[On('deleteGallery')]
+    public function delete($galleryId)
     {
-        $item = Gallery::findOrFail($id);
-        $item->delete();
-
-        session()->flash('message', 'Gallery item deleted.');
-        $this->loadGalleryItems();
+        try {
+            $item = Gallery::findOrFail($galleryId);
+            $item->delete();
+            $this->dispatch('galleryDeleted');
+            $this->loadGalleryItems();
+        } catch (\Exception $e) {
+            $this->dispatch('error', ['message' => 'Failed to delete gallery item']);
+        }
     }
 
     public function resetFields()
