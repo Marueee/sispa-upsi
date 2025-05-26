@@ -34,7 +34,7 @@
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                @foreach ($applications as $application)
+                @forelse ($applications as $application)
                     <tr>
                         <td class="px-6 py-4 border-b border-gray-300 dark:border-gray-700">{{ $application->name }}
                         </td>
@@ -43,11 +43,11 @@
                         <td class="px-6 py-4 text-center border-b border-gray-300 dark:border-gray-700">
                             <span
                                 class="px-3 py-1 inline-flex text-center leading-5 font-semibold rounded-full
-                                {{ $application->status === 'accepted'
-                                    ? 'bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-200'
-                                    : ($application->status === 'rejected'
-                                        ? 'bg-red-100 dark:bg-red-800 text-red-800 dark:text-red-200'
-                                        : 'bg-yellow-100 dark:bg-yellow-800 text-yellow-800 dark:text-yellow-200') }}">
+                {{ $application->status === 'accepted'
+                    ? 'bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-200'
+                    : ($application->status === 'rejected'
+                        ? 'bg-red-100 dark:bg-red-800 text-red-800 dark:text-red-200'
+                        : 'bg-yellow-100 dark:bg-yellow-800 text-yellow-800 dark:text-yellow-200') }}">
                                 {{ ucfirst($application->status) }}
                             </span>
                         </td>
@@ -63,7 +63,13 @@
                             </select>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="4" class="px-6 py-4 text-center text-gray-500 dark:text-gray-300">
+                            No application found.
+                        </td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>
