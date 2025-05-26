@@ -57,16 +57,39 @@
             </div>
         </form>
 
-        <!-- Filter Section -->
-        <div class="mb-4">
-            <label for="batchFilter" class="block text-sm font-medium mb-1">Filter by Batch</label>
-            <select wire:model.live="selectedBatch" id="batchFilter"
-                class="border rounded px-3 py-2 border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
-                <option value="">All Batches</option>
-                @foreach ($batches as $batchOption)
-                    <option value="{{ $batchOption }}">{{ $batchOption }}</option>
-                @endforeach
-            </select>
+        <!-- Search and Filter Section -->
+        <div class="mb-4 flex flex-wrap gap-4 items-end">
+            <!-- Search Box -->
+            <div class="flex-1">
+                <label for="search" class="block text-sm font-medium mb-1">Search</label>
+                <input type="text" wire:model.live="search" id="search"
+                    class="w-full border rounded px-3 py-2 border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700"
+                    placeholder="Search by name, matric no, or batch...">
+            </div>
+
+            <!-- Per Page Selector -->
+            <div>
+                <label for="perPage" class="block text-sm font-medium mb-1">Show</label>
+                <select wire:model.live="perPage" id="perPage"
+                    class="border rounded px-3 py-2 border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+
+            <!-- Batch Filter -->
+            <div>
+                <label for="batchFilter" class="block text-sm font-medium mb-1">Filter by Batch</label>
+                <select wire:model.live="selectedBatch" id="batchFilter"
+                    class="border rounded px-3 py-2 border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700">
+                    <option value="">All Batches</option>
+                    @foreach ($batches as $batchOption)
+                        <option value="{{ $batchOption }}">{{ $batchOption }}</option>
+                    @endforeach
+                </select>
+            </div>
         </div>
 
         <!-- Table Section -->
@@ -83,7 +106,7 @@
             <tbody>
                 @forelse ($members as $index => $member)
                     <tr class="text-center">
-                        <td class="border px-4 py-2">{{ $index + 1 }}</td>
+                        <td class="border px-4 py-2">{{ ($members->currentPage() - 1) * $members->perPage() + $loop->iteration }}</td>
                         <td class="border px-4 py-2">{{ $member->name }}</td>
                         <td class="border px-4 py-2">{{ $member->matric_no }}</td>
                         <td class="border px-4 py-2">{{ $member->batch }}</td>
@@ -116,6 +139,11 @@
                 @endforelse
             </tbody>
         </table>
+
+        <!-- Add pagination links below the table -->
+        <div class="mt-4">
+            {{ $members->links() }}
+        </div>
     </div>
 
     @push('scripts')

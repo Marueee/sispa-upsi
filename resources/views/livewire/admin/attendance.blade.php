@@ -64,13 +64,22 @@
             {{-- Attendance Section --}}
             @if ($members->isNotEmpty())
                 <div class="overflow-x-auto mt-4">
-                    {{-- Batch Filter and Per Page Selection --}}
+                    {{-- Search and Filter Section --}}
                     <div class="mb-4 flex items-center space-x-4">
+                        {{-- Search Box --}}
+                        <div class="flex-1">
+                            <label class="block text-sm font-medium mb-1">Search:</label>
+                            <input type="text" 
+                                wire:model.live="search" 
+                                class="w-full border rounded px-3 py-2 border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700"
+                                placeholder="Search by name or matric number...">
+                        </div>
+
+                        {{-- Existing Batch Filter --}}
                         <div>
                             <label class="block text-sm font-medium mb-1">Filter by Batch:</label>
                             <select wire:model.live="selectedBatch"
-                                id="batchFilter"
-                                class="border rounded px-3 py-2 border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                class="border rounded px-3 py-2 border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700">
                                 <option value="">All Batches</option>
                                 @foreach ($batches as $batch)
                                     <option value="{{ $batch }}">{{ $batch }}</option>
@@ -78,10 +87,11 @@
                             </select>
                         </div>
 
+                        {{-- Per Page Selector --}}
                         <div>
                             <label class="block text-sm font-medium mb-1">Items per page:</label>
                             <select wire:model.live="perPage"
-                                class="border rounded px-3 py-2 border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                class="border rounded px-3 py-2 border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700">
                                 <option value="10">10</option>
                                 <option value="25">25</option>
                                 <option value="50">50</option>

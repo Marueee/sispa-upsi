@@ -87,15 +87,30 @@ class AttendanceManager extends Component
         }
     }
 
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingSelectedBatch()
+    {
+        $this->resetPage();
+    }
+
     public function getMembers()
     {
-        $query = Member::query();
-
-        if ($this->selectedBatch) {
-            $query->where('batch', $this->selectedBatch);
-        }
-
-        return $query->orderBy('name')->paginate($this->perPage);
+        return Member::query()
+            ->when($this->search, function($query) {
+                return $query->where(function($q) {
+                    $q->where('name', 'like', '%' . $this->search . '%')
+                      ->orWhere('matric_no', 'like', '%' . $this->search . '%');
+                });
+            })
+            ->when($this->selectedBatch, function($query) {
+                return $query->where('batch', $this->selectedBatch);
+            })
+            ->orderBy('name')
+            ->paginate($this->perPage);
     }
 
     public function getGroupedMembersProperty()
@@ -116,26 +131,16 @@ class AttendanceManager extends Component
 
     public function render()
     {
-        $members = Member::query()
-            ->when($this->selectedBatch, function($query) {
-                return $query->where('batch', $this->selectedBatch);
-            })
-            ->when($this->search, function($query) {
-                return $query->where('name', 'like', '%' . $this->search . '%')
-                    ->orWhere('matric_no', 'like', '%' . $this->search . '%');
-            })
-            ->orderBy('name')
-            ->paginate($this->perPage);
+        $members = $this->getMembers();
 
         // If batch is selected, group the paginated results
-        if ($this->selectedBatch) {
-            $groupedMembers = $members->groupBy('batch');
-        }
+        $groupedMembers = $this->selectedBatch ?
+            $members->groupBy('batch') : null;
 
         return view('livewire.admin.attendance', [
             'members' => $members,
-            'groupedMembers' => $this->selectedBatch ? $groupedMembers : null,
-            'batches' => Member::distinct()->pluck('batch')->sort(),
+            'groupedMembers' => $groupedMembers,
+            'batches' => $this->getBatchesProperty(),
             'existingEvents' => $this->selectedDate ?
                 Event::whereDate('date', $this->selectedDate)
                      ->orderBy('name')
