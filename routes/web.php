@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\SispaApplicationController;
 use App\Http\Controllers\ContactFormController;
 use App\Livewire\Admin\ContactMessages;
 use App\Livewire\Admin\GalleryManager;
+use App\Http\Controllers\Staff\StaffDashboardController;
 
 Route::post('/sispa/register', [SispaController::class, 'register'])->name('sispa.register');
 Route::get('/sispa/register', [SispaController::class, 'showRegisterForm'])->name('sispa.register.form');
@@ -39,17 +40,22 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
-Route::middleware(['auth', 'role:admin'])->group(function () {
+Route::middleware(['auth', 'role:admin|staff'])->group(function () {
+    Route::get('admin/attendance', AttendanceManager::class)->name('admin.attendance');
+    Route::get('admin/report', Report::class)->name('admin.report');
+});
 
+Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('admin/dashboard', Dashboard::class)->name('dashboard');
     Route::get('admin/news', NewsManager::class)->name('admin.news');
     Route::get('admin/members', Members::class)->name('admin.members');
-    Route::get('admin/attendance', AttendanceManager::class)->name('admin.attendance');
     Route::get('admin/gallery', GalleryManager::class)->name('admin.gallery');
-    Route::get('admin/report', Report::class)->name('admin.report');
     Route::get('admin/sispa-applications', SispaApplications::class)->name('admin.sispa.applications');
     Route::post('admin/sispa-applications/{id}/status', [SispaAdminController::class, 'updateStatus'])->name('admin.sispa.updateStatus');
+});
 
+Route::middleware(['auth', 'role:staff'])->group(function () {
+    Route::get('/staff/dashboard', [StaffDashboardController::class, 'index'])->name('staff.dashboard')->middleware(['auth', 'role:staff']);
 });
 
 
@@ -57,9 +63,9 @@ Route::view('posts', 'posts')
     ->middleware(['auth', 'role:admin'])
     ->name('posts');
 
-Route::view('user', 'user')
-    ->middleware(['auth', 'role:user'])
-    ->name('user');
+Route::view('staff', 'staff')
+    ->middleware(['auth', 'role:staff'])
+    ->name('staff');
 
 Route::get('/news/{news}', [WelcomeController::class, 'show'])->name('news.show');
 

@@ -49,7 +49,7 @@ class Login extends Component
             return $this->redirectIntended(route('dashboard', absolute: false), navigate: true);
         } else {
             // Redirect to the user dashboard
-            return $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+            return $this->redirectIntended(default: route('staff', absolute: false), navigate: true);
         }
         // $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
     }

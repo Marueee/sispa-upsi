@@ -16,12 +16,15 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         Permission::create(['name' => 'admin']);
-        Permission::create(['name' => 'user']);
+        Permission::create(['name' => 'staff']);
 
-        Role::create(['name' => 'admin'])
+        $adminRole = Role::create(['name' => 'admin'])
             ->givePermissionTo('admin');
-        Role::create(['name' => 'user'])
-            ->givePermissionTo('user');
+        $staffRole = Role::create(['name' => 'staff'])
+            ->givePermissionTo('staff');
+
+        // Make staff inherit admin permissions
+        $staffRole->syncPermissions($adminRole->permissions);
 
         $user = User::create([
             'name' => 'Admin',
@@ -32,11 +35,11 @@ class UserSeeder extends Seeder
         $user->assignRole('admin');
 
         $user = User::create([
-            'name' => 'User',
-            'email' => 'user@local.com',
+            'name' => 'Staff',
+            'email' => 'staff@local.com',
             'password' => bcrypt('password'),
         ]);
 
-        $user->assignRole('user');
+        $user->assignRole('staff');
     }
 }

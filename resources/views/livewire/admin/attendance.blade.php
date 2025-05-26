@@ -69,8 +69,8 @@
                         {{-- Search Box --}}
                         <div class="flex-1">
                             <label class="block text-sm font-medium mb-1">Search:</label>
-                            <input type="text" 
-                                wire:model.live="search" 
+                            <input type="text"
+                                wire:model.live="search"
                                 class="w-full border rounded px-3 py-2 border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700"
                                 placeholder="Search by name or matric number...">
                         </div>
@@ -225,8 +225,8 @@
                         if (result.isConfirmed) {
                             // Show loading state
                             Swal.fire({
-                                title: 'Sedang Diproses...',
-                                html: 'Sila tunggu sebentar.',
+                                title: 'Loading',
+                                html: 'Please wait a moment.',
                                 allowOutsideClick: false,
                                 allowEscapeKey: false,
                                 didOpen: () => {
@@ -243,8 +243,8 @@
                 Livewire.on('attendanceSaved', () => {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Berjaya!',
-                        text: 'Kehadiran telah berjaya disimpan!',
+                        title: 'Success!',
+                        text: 'Attendance has been saved successfully!',
                         timer: 3000,
                         timerProgressBar: true,
                         showConfirmButton: false,
@@ -262,8 +262,8 @@
                 Livewire.on('attendanceError', () => {
                     Swal.fire({
                         icon: 'error',
-                        title: 'Ralat!',
-                        text: 'Gagal menyimpan kehadiran. Sila cuba lagi.',
+                        title: 'Error!',
+                        text: 'Failed to save attendance. Please try again.',
                         timer: 3000,
                         timerProgressBar: true,
                         showConfirmButton: false,
