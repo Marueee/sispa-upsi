@@ -6,7 +6,7 @@ run all command first
 
 
 admin id : admin@local.com:password
-staff id: staff@locat.com:password
+staff id: staff@local.com:password
 user id : user@local.com:password
 
 
