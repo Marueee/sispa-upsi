@@ -634,7 +634,7 @@
         </section>
 
 
-{{-- 
+{{--
         <!-- How We Work Section -->
         <section id="how-we-work" class="how-we-work section">
 
@@ -1208,7 +1208,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-2 col-md-3 footer-links">
+                {{-- <div class="col-lg-2 col-md-3 footer-links">
                     <h4>Useful Links</h4>
                     <ul>
                         <li><a href="#">Home</a></li>
@@ -1250,7 +1250,7 @@
                         <li><a href="#">Trodelas</a></li>
                         <li><a href="#">Flexo</a></li>
                     </ul>
-                </div>
+                </div> --}}
 
             </div>
         </div>
@@ -1263,7 +1263,6 @@
                 <!-- You can delete the links only if you've purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
             </div>
         </div>
 
