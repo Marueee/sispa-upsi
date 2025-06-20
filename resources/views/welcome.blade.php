@@ -28,6 +28,8 @@
     <!-- Main CSS File -->
     <link href="{{ asset('build/assets/css/main.css') }}" rel="stylesheet">
 
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+
     <!-- =======================================================
   * Template Name: Scout
   * Template URL: https://bootstrapmade.com/scout-bootstrap-multipurpose-template/
