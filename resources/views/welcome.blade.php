@@ -9,8 +9,8 @@
     <meta name="keywords" content="">
 
     <!-- Favicons -->
-    <link href="{{ asset('build/assets/img/sispalogo.png') }}" rel="icon">
-    <link href="{{ asset('build/assets/img/sispalogo.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('public/build/assets/img/sispalogo.png') }}" rel="icon">
+    <link href="{{ asset('public/build/assets/img/sispalogo.png') }}" rel="apple-touch-icon">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -20,13 +20,13 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="{{ asset('build/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('build/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('build/assets/vendor/aos/aos.css') }}" rel="stylesheet">
-    <link href="{{ asset('build/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/build/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/build/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/build/assets/vendor/aos/aos.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/build/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
 
     <!-- Main CSS File -->
-    <link href="{{ asset('build/assets/css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/build/assets/css/main.css') }}" rel="stylesheet">
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -46,8 +46,8 @@
 
             <a href="index.php" class="logo d-flex align-items-center me-auto">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
-                <img src="{{ asset('build/assets/img/logoupsi1.png') }}" alt="">
-                <img src="{{ asset('build/assets/img/sispalogo.png') }}" alt="">
+                <img src="{{ asset('public/build/assets/img/logoupsi1.png') }}" alt="">
+                <img src="{{ asset('public/build/assets/img/sispalogo.png') }}" alt="">
                 {{-- <h1 class="sitename">SISPA</h1> --}}
 
             </a>
