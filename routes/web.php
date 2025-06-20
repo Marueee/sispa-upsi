@@ -26,9 +26,9 @@ Route::get('/admin/messages', ContactMessages::class)->name('admin.messages');
 
 Route::get('/', [WelcomeController::class, 'index'])->name('home');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+// Route::view('dashboard', 'dashboard')
+//     ->middleware(['auth', 'verified'])
+//     ->name('dashboard');
 
 
 Route::middleware(['auth'])->group(function () {
